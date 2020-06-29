@@ -13,16 +13,14 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Your awesome title
-email: your-email@example.com
+title: Code Craft 
+email: prashanth.moorthy@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  For the love of Vim 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "https://codecraft.blog" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: codecraftblog 
+github_username: codecraftblog 
 
 # Build settings
 markdown: kramdown
@@ -31,6 +29,31 @@ remote_theme: "mmistakes/so-simple-theme@3.2.0"
 
 plugins:
   - jekyll-feed
+
+skin: "/assets/css/skins/dark.css"
+
+author:
+  name: Prashanth 
+  twitter: codecraftblog 
+  picture: /images/profileImage_150X150.png
+
+read_time: true
+words_per_minute: 200
+
+google_analytics: UA-156605848-2 
+
+footer_links:
+  - title: Twitter
+    url: https://twitter.com/username
+    icon: fab fa-twitter-square
+  - title: GitHub
+    url: https://github.com/mmistakes
+    icon: fab fa-github-square
+  - title: Feed
+    url: atom.xml
+    icon: fas fa-rss-square
+
+copyright: "This site is made with <3 by *me, myself, and I*."
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

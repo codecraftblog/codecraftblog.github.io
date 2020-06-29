@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to CodeCraft!"
+title:  "Draft - Welcome to CodeCraft!"
 date:   2020-06-28 21:16:00 +0530
 categories: jekyll update
 author:
