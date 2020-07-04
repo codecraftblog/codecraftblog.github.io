@@ -39,6 +39,7 @@ author:
 
 read_time: true
 words_per_minute: 200
+page_excerpts: true
 
 google_analytics: UA-156605848-2 
 
