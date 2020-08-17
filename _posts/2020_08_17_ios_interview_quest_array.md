@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Draft - Swift interview questions (Array)"
-date:   2020-06-28 21:16:00 +0530
-categories: iOS 
+title:  "Swift Interview Questions - Array - Updated 2020"
+date:   2020-08-17 21:16:00 +0530
+categories: iOS, Interview Prep  
 author:
   name: Prashanth 
   twitter: codecraftblog 
@@ -12,7 +12,7 @@ author:
 Array is probably the most widely used data structure. Array is a versatile data structure that used to solve a great number of problems.
 Not surprisingly a lot of interview questions revolve around Arrays. 
 
-This post includes some frequenlty asked questions about Swift Arrays and also explains why things work they way they do. 
+This post includes some frequenlty asked questions about Swift Arrays. 
 
 <br/>
 
@@ -166,21 +166,6 @@ Performance :
 The `reverse()` method has a time complexity of O(n). i.e the time it takes depends directly on the number of elements in the array.
 The `reversed()` method has a complexity of O(1). Since the reversed method does not move the elements of the array, it performs better. 
 
-Here is an exmaple of how the reverse method can be useful. 
-Which searching large arrays if we have an clue about which half of the array an element might lie, we can iterate over the array in reverse order. 
-Here we are looking for the '🍏', note how using the reversed method and then iterating over the array speeds up the look up time. 
-
-```swift 
-let largeArr = Array(repeating: "🍎", count: 999999) + ["🍏"]
-// ["🍎", "🍎", "🍎", .......,"🍎", "🍎", "🍎", "🍏"]
-
-largeArr.contains("🍏")
-// Execution time :  0.38 seconds
-
-largeArr.reversed().contains("🍏")
-// Execution time : 0.00008 seconds
-```
-
 <br />
 <p style="text-align:center;">───── ⋆⋅☆⋅⋆ ─────</p>
 <br />
@@ -193,14 +178,11 @@ largeArr.reversed().contains("🍏")
 ```swift
 let students = ["Alice", "Bob", "Chad"]
 
-students.contains("Bob")
-// true
+students.contains("Bob")    // true
 
-students.contains("Dan")
-// false 
+students.contains("Dan")    // false 
 
-students.contains("BOB")
-// false 
+students.contains("BOB")    // false  (compare is case-sensitive) 
 ```
 <br>
 #### How contains works 
@@ -253,9 +235,8 @@ users.contains { (userX) -> Bool in
 <p style="text-align:center;">───── ⋆⋅☆⋅⋆ ─────</p>
 <br />
 
+<!--
 IS it possible to create an Heterogesoud array in swift.
 // Swift docs say the following "An array stores values of the same type in an ordered list."
 // Is it possbile to create an array that contains only Int and Strings? For eg: [1,2,"fizz",4,"buzz"] ?
-<br />
-<p style="text-align:center;">───── ⋆⋅☆⋅⋆ ─────</p>
-<br />
+-->
