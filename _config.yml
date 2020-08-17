@@ -50,7 +50,9 @@ footer_links:
     url: https://github.com/TheAppMentor 
     icon: fab fa-github-square
 
-copyright: "This site is made with <3 by *me, myself, and I*."
+copyright: "@codecraftblog"
+
+excerpt_separator: <!--more-->
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

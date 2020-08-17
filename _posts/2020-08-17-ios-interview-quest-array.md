@@ -2,7 +2,8 @@
 layout: post
 title:  "Swift Interview Questions - Array - Updated 2020"
 date:   2020-08-16 21:16:00 +0530
-categories: iOS, Interview Prep  
+categories: iOS Interview
+permalink: /swift_interview_array_1
 author:
   name: Prashanth 
   twitter: codecraftblog 
@@ -12,8 +13,8 @@ author:
 Array is probably the most widely used data structure. Array is a versatile data structure that used to solve a great number of problems.
 Not surprisingly a lot of interview questions revolve around Arrays. 
 
-This post includes some frequenlty asked questions about Swift Arrays. 
-
+This post includes some frequently asked questions about Swift Arrays. 
+<!--more-->
 <br/>
 
 <h3 style="color:#29c7ac;">Q. How can you safely fetch the first element a Swift Array?</h3>
