@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Swift Interview Questions - Array - Updated 2020"
-date:   2020-08-17 21:16:00 +0530
+date:   2020-08-16 21:16:00 +0530
 categories: iOS, Interview Prep  
 author:
   name: Prashanth 

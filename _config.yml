@@ -16,7 +16,6 @@
 title: Code Craft 
 email: prashanth.moorthy@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  For the love of Vim 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://codecraft.blog" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: codecraftblog 
@@ -45,14 +44,11 @@ google_analytics: UA-156605848-2
 
 footer_links:
   - title: Twitter
-    url: https://twitter.com/username
+    url: https://twitter.com/codecraftblog
     icon: fab fa-twitter-square
   - title: GitHub
-    url: https://github.com/mmistakes
+    url: https://github.com/TheAppMentor 
     icon: fab fa-github-square
-  - title: Feed
-    url: atom.xml
-    icon: fas fa-rss-square
 
 copyright: "This site is made with <3 by *me, myself, and I*."
 
