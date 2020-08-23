@@ -9,21 +9,25 @@ author:
   twitter: codecraftblog 
   picture: /images/profilePhoto.jpg
 ---
+The Array is probably the most widely used data structure in programming. The array is a versatile data structure that used to solve a large number of problems.
+It is easy to learn and work with an array however, most programmers don't use all of Array's features. 
 
-Array is probably the most widely used data structure. Array is a versatile data structure that used to solve a great number of problems.
-Not surprisingly a lot of interview questions revolve around Arrays. 
+It is also important to understand how Swift array works under the hood to determine if an array is the best data structure for a given task. Knowledge of how the different array methods and properties are implemented also helps avoid common pitfalls. 
 
-This post includes some frequently asked questions about Swift Arrays. 
+Not surprisingly a lot of interview questions revolve around the array. 
+
+This post includes some of the most frequent interview questions. 
 <!--more-->
+
 <br/>
 
 <h3 style="color:#29c7ac;">Q. How can you safely fetch the first element a Swift Array?</h3>
 
->Swift Array's provides the `first` property to safely fetch the first element of the array if it exists. 
+>Swift Array provides the `first` property to safely fetch the first element of the array if it exists. 
 >
->The first property returns an optonal value. The return value is nil if the array is empty. 
+>The `first` property returns an optional value. The return value is nil if the array is empty. 
 >
->Avoid using array[0], this will throw an exception and crash at runtime if the array is empty. 
+>Avoid using the array[0], this will throw an exception and crash at runtime if the array is empty. 
 
 ```swift
 let fruits = ["🍎","🥭","🍏","🥝","🍍"]
@@ -55,7 +59,7 @@ fruits.last //🍍
 
 > Use Swift Array's `prefix(_:)` method to extract the first 'n' elements. 
 >
-> The prefix method safefguards against fetching elements that are beyond the elements in the array. 
+> The prefix method safeguards against fetching elements that are beyond the elements in the array. 
 > `prefix(_:)` returns all the elements of the array if n exceeds the number of elements in the array. 
 
 ```swift 
@@ -74,8 +78,8 @@ fruits.prefix(10)
 fruits[0...10]
 // error❗️ - Array has only 4 valid indices.
 ```
-Note : The prefix method returns an `ArraySlice` and not new array. i.e it does not allocate any new storage.
-An `ArraySlice` can be thought of a view of the existing array. 
+Note: The prefix method returns an `ArraySlice` and not a new array. i.e it does not allocate any new storage.
+An `ArraySlice` can be thought of as a view of the existing array. 
 
 ```swift
 func prefix(_ maxLength: Int) -> ArraySlice<Element>
@@ -99,9 +103,9 @@ Array also has the `suffix(:_)` method to retrive the last n elements.
 
 <h3 style="color:#29c7ac;">Q. How do you check if an Swift Array is empty?</h3>
 
-> Swift Array has an property named `isEmpty` that can be used to check if array has no elements. <br>
+> Swift Array has a property named `isEmpty` that can be used to check if the array has no elements. <br>
 >
-> The `isEmpty` property returns a boolean value which is `true` if the arrray is empty.
+> The `isEmpty` property returns a boolean value which is `true` if the array is empty.
 
 ```swift
 let emptyArr = [String]()
@@ -121,15 +125,15 @@ Some commonly used types that conform to the Collection protocol are Array, Set,
 The `isEmpty` property has a complexity of O(1) for collections. 
 
 #### Using isEmpty vs count == 0
-In other languages for eg: JavaScript, we check the if the length of a array is 0 to determine if its empty. 
+In other languages for eg: JavaScript, we check if the length of an array is 0 to determine if it is empty. 
 
-For most most commonly used collections such as Array, Set, Dictionary both isEmpty and count == 0 is O(1) time (constant). However, its not true for all Collection types. 
+For most commonly used collections such as Array, Set, Dictionary both isEmpty and count == 0 is O(1) time (constant). However, it is not true for all Collection types. 
 
-For eg: The default view of a Swift string is a collection of characters. In the case of String the time complexity of `count` is O(n). 
+For eg: The default view of a Swift string is a collection of characters. In the case of String, the time complexity of `count` is O(n). 
 i.e the time taken to compute the count depends on the number of characters. To get the count we need to traverse the entire string.
-Using count == 0 is inefficient way to check if a `String` is empty.
+Using count == 0 is an inefficient way to check if a `String` is empty.
 
-To keep things consistent. Its advisable to use isEmpty for any type of collection.
+To keep things consistent. It is advisable to use isEmpty for any type of collection.
 
 <br />
 <p style="text-align:center;">───── ⋆⋅☆⋅⋆ ─────</p>
@@ -138,21 +142,21 @@ To keep things consistent. Its advisable to use isEmpty for any type of collecti
 <h3 style="color:#29c7ac;">Q. How can you reverse the contents of an array? </h3>
 
 > The `reverse` method reverses the order of the elements in place. i.e The source array will be mutated. 
-> Another method `reversed()` return a view of the original array where the elements are in the reverse order. The reversed method does not allocate new storage.
+> Another method `reversed()` returns a view of the original array where the elements are in the reverse order. The reversed method does not allocate new storage.
 
 ```swift 
 var sampleArr1 = ["🐶","🐱","🐭"]
 sampleArr1.reverse()
 //output :  ["🐭", "🐱", "🐶"]
 ```
-Here the sampleArr1 itself is mutated. Further more, because the array is mutated, we have to declare it as a `var` 
+Here the sampleArr1 itself is mutated. Furthermore, because the array is mutated, we have to declare it as a `var` 
 
 ```swift 
 let sampleArr2 = ["🐶","🐱","🐭"]
 sampleArr2.reversed()           
 //output :  ReversedCollection<Array<String>>
 ```
-The reversed method simply wraps the original array in a `ReversedCollection`. It not reverse the array as yet.
+The reversed method simply wraps the original array in a `ReversedCollection`. It does not reverse the array as yet.
 The array we started with is unchanged. 
 ReversedCollection is simply an entity that promises to behave as if the array is reversed. 
 
@@ -174,7 +178,7 @@ The `reversed()` method has a complexity of O(1). Since the reversed method does
 
 <h3 style="color:#29c7ac;">Q. How do you check if an array of strings contains a given string? </h3>
 
-> Swift Array type defines the a method called `contains` that can be used to check if an Array of strings contains a given string. 
+> Swift Array type defines a method called `contains` that can be used to check if an Array of strings contains a given string. 
 
 ```swift
 let students = ["Alice", "Bob", "Chad"]
@@ -193,7 +197,7 @@ students.contains("BOB")    // false  (compare is case-sensitive)
 <!-- 
 Refer to this post for a detailed discussion on how the `contains` method works in Swift. 
 
-In this post we look at at different wasy in which elemnts in an array.
+In this post, we look at different ways in which elements in an array.
 -->
 
 <br />
@@ -201,9 +205,9 @@ In this post we look at at different wasy in which elemnts in an array.
 <br /> 
 <h3 style="color:#29c7ac;">Q. How do you check if an array of custom elements contains a given element? </h3>
 
-> Swift Array type defines the a method called `contains(where : )` that can be used to check if the element that matches a predicate.
+> Swift Array type defines the method called `contains(where : )` that can be used to check if the element that matches a predicate.
 
-For eg : Consider an Array of Users. Where `User` is a type we have defined(struct) 
+For eg: Consider an Array of Users. Where `User` is a type we have defined(struct) 
 
 ```swift
 struct User {
@@ -237,7 +241,8 @@ users.contains { (userX) -> Bool in
 <br />
 
 <!--
-IS it possible to create an Heterogesoud array in swift.
+IS it possible to create an Heterogesoud array in Swift?
 // Swift docs say the following "An array stores values of the same type in an ordered list."
-// Is it possbile to create an array that contains only Int and Strings? For eg: [1,2,"fizz",4,"buzz"] ?
+// Is it possible to create an array that contains only Int and Strings? For eg: [1,2,"fizz",4,"buzz"] ?
 -->
+
