@@ -2,7 +2,7 @@
 layout: post
 title:  "Converting Dates to String using Swift"
 date:   2020-08-22 21:16:00 +0530
-categories: iOS, Swift, DateFormatter 
+categories: iOS Swift DateFormatter 
 author:
   name: Prashanth 
   twitter: codecraftblog 
@@ -32,10 +32,13 @@ We also see how to convert Date to String that appears more natural for eg: stri
 We first create Date instance and then convert it to a String. 
 
 ```swift
-let today = Date() // 2020-08-22 10:50:48 +0000
+
+let today = Date() 
+// 2020-08-22 10:50:48 +0000
 
 let strDate = "\(today)"
 // 2020-08-22 10:53:05 +0000
+
 ```
 
 The generated date string has all the information, but it is not easy to read and it is not something you would display to the user.
@@ -50,6 +53,7 @@ The `DateFormatter` class helps convert `Date` objects to their corresponding `S
 The code shows the 3 steps required to convert a `Date` to a `String` in Swift.
 
 ```swift
+
 // Convert string to Date
 let dateF = DateFormatter()  // 1
 
@@ -57,6 +61,7 @@ dateF.dateStyle = .short     // 2
 
 dateF.string(from: today)    // 3 
 // "8/23/20"
+
 ```
 
 1. Create a `DateFormatter` instance.
@@ -78,6 +83,7 @@ dateF.string(from: today)
 dateF.dateStyle = .full
 dateF.string(from: today)
 // "Sunday, August 23, 2020"
+
 ```
 
 <br>
@@ -89,6 +95,7 @@ For eg: If you plan to meet your friend the next day. You might say, *"I will me
 DateFormatter comes to the rescue again. We can set the property `doesRelativeDateFormatting = true` and viola.
 
 ```swift
+
 dateF.doesRelativeDateFormatting = true
 
 dateF.string(from: today)
@@ -101,6 +108,7 @@ dateF.string(from: tomorrow)
 let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
 dateF.string(from: yesterday)  
 // "Yesterday" 
+
 ```
 
 <br>
@@ -130,6 +138,7 @@ In most cases, the default behavior is what the user would expect and it should 
 If changing the Dateformatter's locale is appropriate for your app, you can set the locale as shown below. 
 
 ```swift
+
 dateF.locale = Locale(identifier: "de")
 dateF.string(from: today)
 
@@ -141,12 +150,12 @@ dateF.string(from: Date())
 
 ```
 
-The table below lists examples of how the output might shoe for different Locales.
+**Table : Date to String conversion based on Locale**
 
 | | en_US| hi_IN| de_DE
 | ------------- |:-------------|:-----|:-----|
 | Today - 2 days | -- |परसों | Vorgestern|
-| Today - 1 day | centered      | कल | Gestern|
+| Today - 1 day | Yesterday | कल | Gestern|
 | Today | Today | आज | Heute|
 | Today + 1 day  | Tomorrow | आने वाला कल | Morgen | 
 | Today + 2 days | -- | आने वाला परसों | Übermorgen |
