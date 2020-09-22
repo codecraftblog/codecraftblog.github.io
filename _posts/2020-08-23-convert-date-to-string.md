@@ -10,6 +10,7 @@ author:
 ---
 
 Dates are represented in Swift code using the `Date` structure. 
+
 The `Date` type makes it easy to work with dates. You can easily perform operations like persisting `Date` instances, comparing two Dates, checking if the given `Date` falls on a weekend, etc.
 
 While the `Date` type is great for working with dates in code, they often need to be converted to their corresponding `String` representation before it is displayed to the user.

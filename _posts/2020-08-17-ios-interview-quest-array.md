@@ -192,7 +192,7 @@ students.contains("BOB")    // false  (compare is case-sensitive)
 <br>
 #### How contains works 
 
-![Drag Racing](/images/trial.gif)
+![Contains Animation](/images/trial.gif)
 
 <!-- 
 Refer to this post for a detailed discussion on how the `contains` method works in Swift. 
