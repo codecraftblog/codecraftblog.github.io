@@ -29,7 +29,11 @@ remote_theme: "mmistakes/so-simple-theme@3.2.0"
 plugins:
   - jekyll-feed
 
-skin: "/assets/css/skins/dark.css"
+#skin: "/assets/css/skins/dark.css"
+skin: "/assets/css/skins/default.css"
+#skin: "/assets/css/skins/light.css"
+#skin: "/assets/css/skins/dark.css"
+#skin: "/assets/css/skins/prashdark.css"
 
 author:
   name: Prashanth 
@@ -38,7 +42,7 @@ author:
 
 read_time: true
 words_per_minute: 200
-page_excerpts: true
+#page_excerpts: true
 
 google_analytics: UA-156605848-2 
 

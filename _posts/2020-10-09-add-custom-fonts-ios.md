@@ -13,7 +13,6 @@ There might be other factors that require you to use a custom font such as adher
 In this post, we look at **How to add a custom font to your Xcode project or iOS app?**. 
 We also give a few important factors that you should consider before using a custom font.
 
-<br>
 ### Steps to add custom fonts to an iOS project
 
 <!-- toc -->
@@ -24,8 +23,32 @@ We also give a few important factors that you should consider before using a cus
 <!-- tocstop -->
 
 <!--more-->
-
 <br>
+
+<form name="contact" method="POST" data-netlify="true">
+  <p>
+    <label>Your Name: <input type="text" name="name" /></label>   
+  </p>
+  <p>
+    <label>Your Email: <input type="email" name="email" /></label>
+  </p>
+  <p>
+    <label>Your Role: <select name="role[]" multiple>
+      <option value="leader">Leader</option>
+      <option value="follower">Follower</option>
+    </select></label>
+  </p>
+  <p>
+    <label>Message: <textarea name="message"></textarea></label>
+  </p>
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
+
+
+
+---
 ## Review custom font files
 
 In this post, we will add a font named [*Lexie Readable.*](https://www.k-type.com/fonts/lexie-readable/) to an iOS app.
