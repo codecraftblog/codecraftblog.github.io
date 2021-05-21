@@ -1,0 +1,57 @@
+<style>
+    form {
+        width: 450px;
+        margin: 17% auto;
+    }
+    .input {
+        color: #fdfcfb;
+        display: flex;
+        align-items: center;
+    }
+    .button {
+        height: 42px;
+        border: none;
+    }
+    #email {
+        width: 60%;
+        font-family: inherit;
+        letter-spacing: 1px;
+        text-indent: 5%;
+        border-radius: 5px 0 0 5px;
+        outline: 2px solid #737373;
+    }
+    #submit {
+        width: 25%;
+        height: 46px;
+        background: #e86c8d;
+        font-family: inherit;
+        font-weight: bold;
+        color: inherit;
+        letter-spacing: 1px;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+    #submit:hover {
+        background: #d45d7d;
+    }
+    input:focus {
+        outline: none;
+        box-shadow: 0 0 2px #e86c8d;
+    }
+</style>
+
+<form action="#" method="post" name="Subscribe-CodeCraft" data-netlify="true" netlify-honeypot="bot-field">
+        <p class="hidden" type="hidden"> <input type="hidden" name="bot-field"/> </p>
+
+        <div class="input">
+            <input
+                type="text"
+                class="button"
+                id="email"
+                name="email"
+                placeholder="youremail@example.com"
+            />
+            <input type="submit" class="button" id="submit" value="Subscribe" />
+        </div>
+    </form>
