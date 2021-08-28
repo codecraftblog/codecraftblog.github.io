@@ -13,7 +13,7 @@ Writing Faster loops in iOS.
 
 Loops are a common used in almost all programs.
 In the post we look at how we can use the available Multi core hardware to speed up loops by executing multiple iterations in parallel.
-iOS? more specifically the GDC provides the concurrentPerorm API that allws us to execute loops in paralle and geain a boost.
+iOS? more specifically the GCD provides the concurrentPerorm API that allws us to execute loops in paralle and geain a boost.
 But wait.. there's a catch. There are few things to keep in mind, for eg: Synchrnization, dependencies.. 
 
 In this post we look at how we can use loops to make speed up our loops.
@@ -37,9 +37,44 @@ https://docs.oracle.com/cd/E19455-01/806-5257/6je9h032b/index.html
 Concurrency - A condition that exists when at least two threads are making progress. A more generalized form of parallelism that can include time-slicing as a form of virtual parallelism. 
 Parallelism - A condition that arises when at least two threads are executing simultaneously.
 
+Lets look at an analogy:
+
+Pizza,
+
+6 ovens (small one, can take only one pizza at a time), each pizza takes about 6 minutes to bake. 
+
+- Prepare the dough     - 1 minute
+- Add Sauce & Toppings  - 1 minute
+- Bakes the pizza       - 10 mins
+
+Thats about 13 minutes to finish one pizza.
+Lets say its early in the day and only one customer shows up. She would have to wait 13 mins to get her pizza.
+A little later a two more customers walks in and he is placing his order. A third cusomter is waitingin the queue. He definitley would not like to wait for 13 mins. before placing his order. 
+That would be bad for business.
+One way to make this process smoother, is to take and prepare the next order when one pizza is baking. 
+This way multiple customers can be processed at the same time. 
+This is concurrency, we are still baking one pizza at a time, but by performing other tasks we when wait, we are making things more a little bit faster. 
+
+Next, lets say, the word spread around and business is really good. We have added a new chefs, but the oven is still a problem.
+
+Now the problem is obovous and infacty silly, "use the other ovens"
+simple Jeff now uses multiple ovens so that mulitple pizzas can bake at the same time.
+If used effectively, we can 
+
+Jeff the chef is the load balancer.
+
+What if you install 50 ovens? Jeff will still be the road block.
+
+Few things to note here :
+- Idle resources are not good.
+- Requires more work. & Co-ordination and synchrnoization.
+- There is a limit.. on how much we can parallelize (Amhdals law) 
+
 https://developer.apple.com/videos/play/wwdc2017/706/?time=175
 Parallelism : Simultaneous execution of closely related computations. (Across different cores) - Requires multiple cores.
 Concurrency : Composition of independently executed tasks. - Can even be done on a single core. 
+
+- ANother example 
 
 For eg: Lets look at the example of an airport check in counter.
 There are 8 counters. One Load balancer. ques of passengers.
