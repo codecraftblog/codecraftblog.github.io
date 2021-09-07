@@ -6,7 +6,6 @@ categories: iOS
 author:
   name: Prashanth 
   twitter: johndoetwitter
-  picture: /images/profilePhoto.jpg
 ---
 
 Writing Faster loops in iOS.
@@ -27,6 +26,25 @@ A multi-core processor is a computer processor on a single integrated circuit wi
 So the point is we a multiple cores that can all execting tasks is parrallel. We need to write our code in such a way that it can be broken into pieces that can each execute in a different process.
 
 
+## Introduction
+
+Before dive into loops, lets talk about Pepe
+
+This is Pepe. Pepe has inherited the family pizzieria.  
+
+Being a very old store, it has a single wood-fired oven. The oven can only bake one pizza at a time, and it takes exactly 12 mintues to bake one pizza. 
+
+When a customer walks in, Pepe goes through these steps :
+- Takes the order    - 1 minute
+- Prepares the dough, adds Sauce & toppings  - 1 minute
+- Bakes the pizza       - 10 mins
+
+Customer will have to wait for 13 minutes for her pizza.
+
+
+
+
+
 # Parallelism and concurrency are different things. 
 Parallelism vs Concurrency
 
@@ -37,27 +55,66 @@ https://docs.oracle.com/cd/E19455-01/806-5257/6je9h032b/index.html
 Concurrency - A condition that exists when at least two threads are making progress. A more generalized form of parallelism that can include time-slicing as a form of virtual parallelism. 
 Parallelism - A condition that arises when at least two threads are executing simultaneously.
 
+
+
 Lets look at an analogy:
 
-Pizza,
+Runs the family Pizza Store, 
+1 ovens (small one, can take only one pizza at a time), each pizza takes about 12 minutes to bake. 
 
-6 ovens (small one, can take only one pizza at a time), each pizza takes about 6 minutes to bake. 
-
-- Prepare the dough     - 1 minute
+- Prepare the dough  ?? take the order    - 1 minute
 - Add Sauce & Toppings  - 1 minute
 - Bakes the pizza       - 10 mins
+
+Prashanth : Initial Animation goes here. Serving one customer at a time.
+Customer will have to wait for 13 minutes for her pizza.
+
+Word spreads and more people start visting the Pizza Store.
+There is a problem, since we can only bake one pizza a time, if two customers walked in at the same time.. the first one would get his pizza in 12 mins, but the sconed cusotmer would have to wait 24 mins before he can eat.
+Prasanth : Add the timeline chart here.
+
+Ofocurse this is will not scale, if there are 3 cusomters in a gque.. 36, 48 mins.. pretty soon we will have lots of hungry and angry customers. 
+
+Concurrency :
+One tweak that John can make, when one pizza is baking, he can prepare the order of tne next customer, that would make the problem better.
+We still have the same over and john but the oven is still the bottleneck.
+One way to make this process smoother, is to take and prepare the next order when one pizza is baking. 
+This way multiple customers can be processed at the same time. 
+This is concurrency, we are still baking one pizza at a time, but by performing other tasks we when wait, we are making things more a little bit faster. 
+
+i.e two customer are being servered, but thier pizzas are not necssiary baking. :D
+
+Parallelism :
+Install more ovens installs an additional oven. Now we can process two pizzas at the same time. i.e we can serve 2 customers at the same time.
+Throw more resources the problem.
+
+Few things have happened.
+
+Jeff has assumed a new role, load-balancer. He now has to manage two oven to make sure they dont get burnt.
+
+How many ovens?
+So we can see that two is better than one, but why not 3 or 100.
+Depends on Jeff.
+
+Jeff the chef is the load balancer.
+
+What if you install 50 ovens? Jeff will still be the road block.
+
+### Paralleism is not free.
+Few things to note here :
+- Idle resources are not good.
+- Requires more work. & Co-ordination and synchrnoization.
+- There is a limit.. on how much we can parallelize (Amhdals law) 
+- Hard to predict, so measure measure measure.
 
 Thats about 13 minutes to finish one pizza.
 Lets say its early in the day and only one customer shows up. She would have to wait 13 mins to get her pizza.
 A little later a two more customers walks in and he is placing his order. A third cusomter is waitingin the queue. He definitley would not like to wait for 13 mins. before placing his order. 
 That would be bad for business.
-One way to make this process smoother, is to take and prepare the next order when one pizza is baking. 
-This way multiple customers can be processed at the same time. 
-This is concurrency, we are still baking one pizza at a time, but by performing other tasks we when wait, we are making things more a little bit faster. 
 
 Next, lets say, the word spread around and business is really good. We have added a new chefs, but the oven is still a problem.
 
-Now the problem is obovous and infacty silly, "use the other ovens"
+Now the problem is obvious and infacty silly, "use the other ovens"
 simple Jeff now uses multiple ovens so that mulitple pizzas can bake at the same time.
 If used effectively, we can 
 
@@ -69,53 +126,15 @@ Few things to note here :
 - Idle resources are not good.
 - Requires more work. & Co-ordination and synchrnoization.
 - There is a limit.. on how much we can parallelize (Amhdals law) 
+- Hard to predict, so measure measure measure.
+
 
 https://developer.apple.com/videos/play/wwdc2017/706/?time=175
 Parallelism : Simultaneous execution of closely related computations. (Across different cores) - Requires multiple cores.
+
 Concurrency : Composition of independently executed tasks. - Can even be done on a single core. 
 
-- ANother example 
-
-For eg: Lets look at the example of an airport check in counter.
-There are 8 counters. One Load balancer. ques of passengers.
-
-When a passegner reach a counter. 
-- They id is checked. 
-- Boarding passes are printed. 
-- Luggage is weighed & tagged. 
-
-If it takes 2 mins to complete the three steps and if we have 100 passengers, it should take 200 min to clear the queue.
-
-There a few ways we can speed this up.
-For each passenger what if we process more than one counater a time. 
-say, when the luggage of one passgeinger is being processed, we call the next passenger to check thier ID.
-Here staff is concurrenlty procesisng more than one customer. An importnat point to note is that the one passenger is being attneed to at any given instant.
-
-One a ocomputer 
-
-Parallelism: Is where we have mulitple counters open, say 8. If the load balancer keeps sending passeger to one counter when others are sittle idle is not good.
-Parallemsim, the cpu is not shared instaed mulitple passengers are processed simultanesulsy!
-
-In theory we should get nice speed-up. should be around 8 times.. so our procesisng time clear the quue should drop to 24 mins
-Amhadals law goes here?
-https://en.wikipedia.org/wiki/Amdahl%27s_law
-
-
-Imagine the loadbalancer keeps
-
-
-Thinks of a your bank teller, no matter how fast a single teller is.. 
-Teller for eg: can service more than one customer at the same time. (Prashanth , instead of teller, can we change this to a cook)
-When one guys order is cooking it can get the order ready for another customer.
-Parallelism : When multiple burners, and cooking more than one dish at the at the same time.
-
-Teller 1 : Receives the requests -> Counts the money -> User Verifies the money.
-Teller 2 : Sitting idle.
-
-<<_Animation can go here :_>>
-
-in short, take a large problem and break it down into smaller pieces.. and maybe join them together.
-
+------------
 
 ### Sample code here
 
@@ -123,10 +142,196 @@ Lets look at an example, say we have an app that dispalys photos with a differen
 We start with a bunch of images that we want apply a mono-chreom filter to.
 
 ```swift
-    //Sample code : Regular for-loop that pops a photo can converts it.
+import Foundation
+import UIKit
+
+struct ImageUtils {
+   
+    @discardableResult
+    func applyMonochromeFilter(inputImage : UIImage) -> UIImage? {
+        guard let currentCGImage = inputImage.cgImage else {
+            assertionFailure("Image Processing Failed")
+            return nil
+        }
+        
+        let currentCIImage = CIImage(cgImage: currentCGImage)
+        
+        let filter = CIFilter(name: "CIColorMonochrome")
+        filter?.setValue(currentCIImage, forKey: "inputImage")
+        filter?.setValue(CIColor(red: 0.5, green: 0.5, blue: 0.5), forKey: "inputColor")
+        filter?.setValue(1.0, forKey: "inputIntensity")
+        
+        guard let outputImage = filter?.outputImage,
+              let processedCGImage = CIContext().createCGImage(outputImage, from: outputImage.extent) else {
+                  assertionFailure("Image Processing Failed")
+                  return nil
+              }
+        
+        return UIImage(cgImage: processedCGImage)
+    }
+}
+
+```
+
+To convert and image we call the applyMonoChromeFilter method 
+```swift
+let inputImage = UIImage(named: "54_kb.jpeg")!
+let imageUtils = ImageUtils()
+
+let _ = imageUtils.applyMonochromeFilter(inputImage: inputImage)
+
 ```
 
 Output : Show the total time. This is our bench mark.
+
+On an iPhone 11 this takes about 0.017 secs.
+
+------------
+## Loops
+To process multiple images, wc an use a simple for loop. 
+
+```swift
+// Simple For Loop :
+
+lazy var allImages = Array(repeating: inputImage, count: 100)
+
+for image in allImages {
+    let _ = ImageUtils().applyMonochromeFilter(inputImage: image)
+}
+
+```
+
+On an iPhone 11 this takes about 1.4 secs.
+
+![Time to process image in a loop](/images/concurrent_loops/graph_loop_time.png)
+
+We can see that time to convert n images should take n * t where t is the time to convert each image.
+so in our case, converting 100 images should take 100 * 0.01 = ??? secs
+
+The time taken is proportional to the number of images to convert O(n)
+O(n) will begin to be a problem to be a problem if the number of images are large. 
+
+The code above has a few things going for it. 
+1. For loops are easy to understand & it works for in a wide variety of applicaitons. ??
+2. O(n) time may not work for all scenarios.Its slow. As we add more images its going to take longer.
+
+Disadvantages :
+1. Doesnt take full advantage of the hardware.
+- Running on the main thread.
+- Blocks all other tasks when main thread is busy. 
+
+To get a better understanding of whats going on behind the scences. Introducing Instruments.
+
+If you are new to instruments and want to understand how to profile your app, look at this blog post.
+To learn how to profile you app using instruments check out this post ---link---
+
+![Code runs on the main thread](/images/concurrent_loops/concurrent_loops_001.png)
+
+- Running on the main thread.
+- Blocks all other tasks when main thread is busy. 
+
+
+![Code runs on the main thread](/images/concurrent_loops/instruments_idle_cpu_cores.png)
+
+
+1) All the code is running on the Perofnce cores, which are more expesive
+2) The effiecient cores are sitting idle. and thats a waste of resources.
+
+This is like jeff the pizza guy, he has 8 ovens at his disposal, yet he uses just one of them and keeps his customers waiting.
+
+Problems :
+    Hardware is not fully utilized.
+    We are runnning on the main thread, means app wont be repsonsive at these times.
+    CPU consumption - show it can go > 100%
+
+Running a for-loop, show how this loop runs on the main thread.
+Show which CPU core is used, and how the other threads are sitting idle.
+
+Lets look at how to fix this.
+
+--------------
+
+# We can do better
+
+Our objective is two-fold :
+1) Get off the main thread.
+2) Use all the resources at our disposal.
+
+GCD provides helps us get off the main thread, we need to use DispatchQues. --link to dispatchQ post here --
+Divide our picture array in to chunks and process these chunks in parallel on the different CPU Cores we have idle.
+
+
+```swift
+extension Array {
+    func chunked(by distance: Int) -> [[Element]] {
+        let indicesSequence = stride(from: startIndex, to: endIndex, by: distance)
+        let array: [[Element]] = indicesSequence.map {
+            let newIndex = $0.advanced(by: distance) > endIndex ? endIndex : $0.advanced(by: distance)
+            //let newIndex = self.index($0, offsetBy: distance, limitedBy: self.endIndex) ?? self.endIndex // also works
+            return Array(self[$0 ..< newIndex])
+        }
+        return array
+    }
+    
+}
+```
+
+
+_Utilizing the multiple cores_
+
+Introduce GCD concurrentPeform.
+
+```swift
+let chunkSize = 20
+let chunks = allImages.chunked(by: chunkSize)
+
+DispatchQueue.concurrentPerform(iterations: chunks.count) { iteration in
+    let chunk = chunks[iteration]
+    for image in chunk {
+        let _ = ImageUtils().applyMonochromeFilter(inputImage: image)
+    }
+}
+```
+
+Output : Time to process = 0.34 secs 
+Thats a 4x faster
+
+![Time to process image in a concurrent loop](/images/concurrent_loops/graph_concurrent_loop_time.png)
+
+------------
+
+There is the addtional overhead of spliting the input array, but we still got an impressive 4x boost.
+
+![worker threads are busy](/images/concurrent_loops/instruments_not_idle_worker_threads.png)
+
+![Other cores threads processing images](/images/concurrent_loops/instruments_not_idle_cpu_cores.png)
+
+### Choosing an iteration count.
+
+Iteration count was 5 here multipel of the number of cores.. but measure measure measure.
+the size of each chunk should be suffielnty larget, breaking ito into very small chunks will slow down due to the additonal overhead of load balancing.
+
+Its a blanace between the effor required to load balance vs time to exect
+
+
+### Moving stuff completely off the main thread.
+Theres is still some processsing happening on the main thread.
+
+
+
+
+### How fast can we make Parallel code run?
+Amhadals law goes here?
+https://en.wikipedia.org/wiki/Amdahl%27s_law
+
+------
+
+### Whats the catch?
+
+
+------
+### Cost of Parallellism
+
 
 Problems :
     Hardware is not fully utilized.
@@ -262,6 +467,17 @@ Conclusion : Always mesasure..
 
 Live example :
 
+## Multi Core CPUs:
+What are multi-core CPU's
+How to use them.
+
+As we saw on the instuments tool, we are running this code on a CPU with multiple cores and these cores are sitting idle. We also have the main thread blocked.
+
+Modern computers are multi core processores
+
+A multi-core processor is a computer processor on a single integrated circuit with two or more separate processing units, called cores, each of which reads and executes program instructions.[1]
+
+------------
 
 References : 
 https://www.hackingwithswift.com/example-code/media/how-to-desaturate-an-image-to-make-it-black-and-white
