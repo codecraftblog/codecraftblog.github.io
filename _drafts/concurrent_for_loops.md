@@ -25,7 +25,6 @@ A multi-core processor is a computer processor on a single integrated circuit wi
 
 So the point is we a multiple cores that can all execting tasks is parrallel. We need to write our code in such a way that it can be broken into pieces that can each execute in a different process.
 
-
 ## Introduction
 
 Before dive into loops, lets talk about Pepe
@@ -54,8 +53,6 @@ https://stackoverflow.com/questions/1050222/what-is-the-difference-between-concu
 https://docs.oracle.com/cd/E19455-01/806-5257/6je9h032b/index.html
 Concurrency - A condition that exists when at least two threads are making progress. A more generalized form of parallelism that can include time-slicing as a form of virtual parallelism. 
 Parallelism - A condition that arises when at least two threads are executing simultaneously.
-
-
 
 Lets look at an analogy:
 
@@ -121,12 +118,6 @@ If used effectively, we can
 Jeff the chef is the load balancer.
 
 What if you install 50 ovens? Jeff will still be the road block.
-
-Few things to note here :
-- Idle resources are not good.
-- Requires more work. & Co-ordination and synchrnoization.
-- There is a limit.. on how much we can parallelize (Amhdals law) 
-- Hard to predict, so measure measure measure.
 
 
 https://developer.apple.com/videos/play/wwdc2017/706/?time=175
@@ -237,6 +228,8 @@ To learn how to profile you app using instruments check out this post ---link---
 1) All the code is running on the Perofnce cores, which are more expesive
 2) The effiecient cores are sitting idle. and thats a waste of resources.
 
+https://www.trustedreviews.com/news/apple-a13-bionic-3936887
+
 This is like jeff the pizza guy, he has 8 ovens at his disposal, yet he uses just one of them and keeps his customers waiting.
 
 Problems :
@@ -308,7 +301,7 @@ There is the addtional overhead of spliting the input array, but we still got an
 
 ### Choosing an iteration count.
 
-Iteration count was 5 here multipel of the number of cores.. but measure measure measure.
+Iteration count was 5 here multiple of the number of cores.. but measure measure measure.
 the size of each chunk should be suffielnty larget, breaking ito into very small chunks will slow down due to the additonal overhead of load balancing.
 
 Its a blanace between the effor required to load balance vs time to exect
@@ -317,8 +310,13 @@ Its a blanace between the effor required to load balance vs time to exect
 ### Moving stuff completely off the main thread.
 Theres is still some processsing happening on the main thread.
 
+Assingng a different queue.
 
+```swift
 
+```
+
+Dispatch async to a a worker thread, we can move things off the main thread. 
 
 ### How fast can we make Parallel code run?
 Amhadals law goes here?
@@ -326,22 +324,107 @@ https://en.wikipedia.org/wiki/Amdahl%27s_law
 
 ------
 
+In the example we saw above, running loops in parallel was trivial. By breaking down the loop in smaller chunks we were able to run code in parallel and got a nice boost. But it can that easy . There hos to be a catch. Unfortunatley there is.
+
 ### Whats the catch?
 
+The `applyMonoChromeFilter` method is pure function, i.e. it takes in image as input and returns another version of the image or nil.
+It does not depend on the sorrounding scope. Also within the loop, we simply discard the output image.
+
+The logic within the loop was did not have any dependency on any surrounding code, therefore, it could be run in parallel and each parallel exeuction did not affect any other iteration.
+There's a fancy term for code that behaves this way. The code is said to be "Rentrant"
+
+> A computer program or subroutine is called reentrant if multiple invocations can safely run concurrently on multiple processors, or on a single processor system, where a reentrant procedure can be interrupted in the middle of its execution and then safely be called again ("re-entered") before its previous invocations complete execution.  wikipedia
+https://en.wikipedia.org/wiki/Reentrancy_(computing)
+
+That made it easy for use to simply extract the contents of our loop and execute it within the concurrentPeform.
+
+This is example of an embarssingly-parallel loop. Another fancy term.
+
+However this loop is not very useful, since we dont keep the converted image. 
+
+Let say we want to apply a filter and store the output image in an array.
+our code will look like this.
+Sample code : loop updates an array.
+```swift
+```
+
+Prashanth : Add the Bad Access error code. here.. 
+We read from the input array and keep the converted images say in another array. 
+This would mean our code is no longer re-entrant, i.e we different parts of our loop needs to update the same output array. 
+
+So here we would have two iterations would have something in common. Different iterations running on different threads could try to update the output 
+array the same time. This can lead to upredictable or in consistent behavior.
+https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html
+
+So, we need some way to synchronize access to shared resources. The output array in our case.
+
+In general, here are some of the problems with concurrent loops. 
+
+1) Increased complexity - We now have code to chunk 
+2) Global state. - Shared input (Privitization) and Shared output (Synchornization)
+2) Dependency is an enemy of .. parallelism. 
+3) Increased Memory consumption, all those additional chunks we created will add to the memory.
+5) Ambiguity.
+
+However, the benefits outwight the cons.
+- Phones are powerful and its a crime to not use it.
+- Pefromanc is not optional.
+
+So lets look at some ways to solve these problems.
+
+### Solving problems related to concurrency.
+
+-Wikipedia https://en.wikipedia.org/wiki/Privatization_(computer_programming)
+Dependencies arise when two or more reading or writing a variable at the same time.
+Privitization gives each thread its own copy. This can be written to simultaneusly.. and there fore parallely. 
+
+Read/Write Conflicting variables introduce dependencies between different execution threads and hence prevent the automatic parallelization of the program. 
+The two major techniques used to remove these dependencies are 
+    Privatization : Privatization gives each thread a private copy, so it can read and write it independently and thus simultaneously. 
+    Reduction : Each thread is provided with a copy of the R/W Conflicting variable to operate on it and produce a partial result, which is then combined with other threads' copies to produce a global result.[1]
+
+## Privatization
+
+First try reduction & then privatization. 
+
+Reduction : Increases Computational overhead.
+Privatization is a space-time trade-off. : Increases the memory consumed by the program.
+Mutual Exclusion (sync) : Helps reduces memory 
+There is this other thing called expansion.
+
+Mutual exclusion is another technieque.. here we dont have the space time trade off.. but its slower.
+
+
+
+#### Synchronisation
+
+We run into problems of synchronization, multiple threads trying to write to the same object.
+We need some mechanism to synchoromize the writes. 
+
+problems to addres :
+https://en.wikipedia.org/wiki/Synchronization_(computer_science)
+
+Why we need synchornization.
+
+Mutual Exclusion : https://en.wikipedia.org/wiki/Mutual_exclusion
+https://en.wikipedia.org/wiki/Lock_(computer_science)
+
+- Serial Queues
+- Semaphore
+
+Refer to this post to understand how to use Semaphores. <!-- link to semaphore post -->
+
+#### Using Serial Queue to synchornize access to an array
+
+
+#### Privatization 
+
+### Eliminating depenecy in code.
 
 ------
 ### Cost of Parallellism
 
-
-Problems :
-    Hardware is not fully utilized.
-    We are runnning on the main thread, means app wont be repsonsive at these times.
-    CPU consumption - show it can go > 100%
-
-Running a for-loop, show how this loop runs on the main thread.
-Show which CPU core is used, and how the other threads are sitting idle.
-
-Lets look at how to fix this.
 
 ## Parallelism
 Here we look at how we can use all the cores and run our code in parallel.introduce loop level parallelsim.
@@ -363,7 +446,6 @@ Prashanth : Add the Bad Access error code. here..
 Challenges : 
 Aceess to array is not theard safe, dead locks, if more than one thread tries to write to our array at the same time.
 Size of the task.
-
 
 Whether you can parallelize loops.. You cant just take you input loop.
 
@@ -390,7 +472,6 @@ https://en.wikipedia.org/wiki/Parallel_slowdown
 
 Prashanth This is some generci thing.. i.e Dependencies that exist in code. Not limited to loops.
 
-
 Enemys of parallelism
 
 # Types of dependencies in *code*
@@ -399,47 +480,6 @@ Enemys of parallelism
 - Output Dependence
 - Input Dependence
 
-https://en.wikipedia.org/wiki/Reentrancy_(computing)
-Reentrancy 
-
-problems to addres :
-https://en.wikipedia.org/wiki/Synchronization_(computer_science)
-
-https://en.wikipedia.org/wiki/Amdahl%27s_law#Relation_to_the_law_of_diminishing_returns
-Amdahl's law
-
-## Privatization
-
--Wikipedia https://en.wikipedia.org/wiki/Privatization_(computer_programming)
-Dependencies arise when two or more reading or writing a variable at the same time.
-Privitization gives each thread its own copy. This can be written to simultaneusly.. and there fore parallely. 
-
-Read/Write Conflicting variables introduce dependencies between different execution threads and hence prevent the automatic parallelization of the program. 
-The two major techniques used to remove these dependencies are 
-    Privatization - Privatization gives each thread a private copy, so it can read and write it independently and thus simultaneously. 
-    Reduction : Each thread is provided with a copy of the R/W Conflicting variable to operate on it and produce a partial result, which is then combined with other threads' copies to produce a global result.[1]
-
-First try reduction & then privatization. 
-
-Reduction : Increases Computational overhead.
-Privatization is a space-time trade-off. : Increases the memory consumed by the program.
-Mutual Exclusion (sync) : Helps reduces memory 
-There is this other thing called expansion.
-
-Mutual exclusion is another technieque.. here we dont have the space time trade off.. but its slower.
-
-
-## Synchroniziation
-Mutual Exclusion : https://en.wikipedia.org/wiki/Mutual_exclusion
-https://en.wikipedia.org/wiki/Lock_(computer_science)
-
-- Serial Queues
-- Semaphore
-
-
-
-
-## How do you decide the number of threads.
 
 
 ## Things to consdier :
