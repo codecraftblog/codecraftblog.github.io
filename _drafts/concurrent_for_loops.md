@@ -313,8 +313,24 @@ Theres is still some processsing happening on the main thread.
 Assingng a different queue.
 
 ```swift
-
+var ouputArr = [UIImage]()
+// Chunk Smaller Sizes :
+//let chunkSize = 5
+//let chunks = allImages.chunked(by: chunkSize)
+        
+DispatchQueue.concurrentPerform(iterations: chunks.count) { iteration in
+    let chunk = chunks[iteration]
+    for image in chunk {
+        let convertedImage = ImageUtils().applyMonochromeFilter(inputImage: image)!
+        ouputArr.append(convertedImage)
+    }
+}
 ```
+
+If you have enabled thread sanitizer, you might see some errors like this.
+SUMMARY: ThreadSanitizer: Swift access race
+
+
 
 Dispatch async to a a worker thread, we can move things off the main thread. 
 
@@ -347,6 +363,9 @@ Let say we want to apply a filter and store the output image in an array.
 our code will look like this.
 Sample code : loop updates an array.
 ```swift
+
+
+
 ```
 
 Prashanth : Add the Bad Access error code. here.. 
@@ -375,6 +394,49 @@ So lets look at some ways to solve these problems.
 
 ### Solving problems related to concurrency.
 
+Problem : Read/Write confliing variable.
+
+Ways to solve RW confliciting variables
+1) Mutual Exlusion : 
+2) Privitization 
+
+
+<!-- prashanth : There is a diffence between Privitatzation and reduction
+But the diff is not very clear, lets not get into the details. Here we can just show tow examples
+Mutual Exclusion - Where we have one output array. and every write of the loop is synchornized using a semaphore/serialQ.
+Privitization - Make copies and combine them together. (more efficient)
+
+Think its better not to name these things.
+-->
+
+## Mutual Exclusion. 
+
+Synchornize using locks or some other mechanism.
+
+Sample code : loop updates an array.
+```swift
+```
+
+Problem with mutual exclusion is that its slow.
+Threads will be blocked.
+Order is lost. Might need some other mechanims to restore the order.
+
+## Privitization :
+Each thread maintains a copy of a conflicting variable, which is then combined.
+
+Problem with this, memory.
+
+
+First try reduction & then privatization. 
+
+Reduction : Increases Computational overhead.
+Privatization is a space-time trade-off. : Increases the memory consumed by the program.
+Mutual Exclusion (sync) : Helps reduces memory 
+There is this other thing called expansion.
+
+Mutual exclusion is another technieque.. here we dont have the space time trade off.. but its slower.
+
+
 -Wikipedia https://en.wikipedia.org/wiki/Privatization_(computer_programming)
 Dependencies arise when two or more reading or writing a variable at the same time.
 Privitization gives each thread its own copy. This can be written to simultaneusly.. and there fore parallely. 
@@ -386,14 +448,6 @@ The two major techniques used to remove these dependencies are
 
 ## Privatization
 
-First try reduction & then privatization. 
-
-Reduction : Increases Computational overhead.
-Privatization is a space-time trade-off. : Increases the memory consumed by the program.
-Mutual Exclusion (sync) : Helps reduces memory 
-There is this other thing called expansion.
-
-Mutual exclusion is another technieque.. here we dont have the space time trade off.. but its slower.
 
 
 
@@ -415,7 +469,9 @@ https://en.wikipedia.org/wiki/Lock_(computer_science)
 
 Refer to this post to understand how to use Semaphores. <!-- link to semaphore post -->
 
+
 #### Using Serial Queue to synchornize access to an array
+
 
 
 #### Privatization 
@@ -432,8 +488,8 @@ or lets not talk about loop-level paralleism..
 In this post we will focus on loop level parallelism.
 https://en.wikipedia.org/wiki/Loop-level_parallelism
 
-# Running our loop in Parallel
 
+# Running our loop in Parallel
 # Parallel for loops.
 Split our loop code into splits.
 
@@ -496,6 +552,7 @@ Data Parallelism
   -> & Resize the image.
 GOL = Finding the neighbour count
     -> Struct to represent a cell. 
+
 
 
 # Pitfalls:
