@@ -6,11 +6,9 @@ categories: iOS Swift MVVM Architecture
 author:
   name: Prashanth 
   twitter: codecraftblog 
-  picture: /images/profilePhoto.jpg
 ---
 
 > _To improve is to change; to be perfect is to change often. - Winston Churchill_
-
 
 Architecture Patterns : What are they and why should you care?
 
@@ -34,40 +32,90 @@ MVVM is a strutctural pattern that looks at our we organize our code.
 <!--more-->
 
 <br>
+
+
+
+
+
 ## MVVM Introduction
 
-MVVM is a strutctural design pattern that looks at our we organize our code.
+When it comes to building GUI based applications there are many popular patterns. A few examples are: 
 
-When it comes to building GUI based applications popular patterns are: 
-- Model-View-Controller(MVC), 
-- View-Interactor-Presenter-Entity-Router(VIPER), 
-- Model-View-ViewModel(MVVM) etc.
+- *MVC* - Model-View-Controller
+- *VIPER* - View-Interactor-Presenter-Entity-Router
+- *MVVM* - Model-View-ViewModel
 
-The main goal of these patterns is *separation of concerns*. i.e they guide us on how to structure the different parts of our application. 
-In return we build apps that are easy to reason about, safe to change and easy to test.
+Lets look at MVVM in a more detail.
 
-MVVM is a structural pattern splits our app to three main components based on their roles.
-Model - Contains the business logic
-View - User interface of the app
-ViewModel - Entity that co-ordinates data flow and events between the Model and the View.
+The Model-View-ViewModel (MVVM) is a structural design pattern. Structural design patterns define how to organize different entities in our app and how different entities interact with each other.
 
-Prashanth : Image showing MVVM goes here. Maybe show only the boxes.. with labels for business rules etc.
+The main goal of MVVM is *separation of concerns*. i.e it helps organize our code in a way that each part of our code deals with a coherent set of functions.
+Yes, patterns do impose some restrictions on what we can and cannot do, but in return our code is easy to reason about, safe to change and easy to test.
 
-MVVM pattern also defines rules of interaction between the components.
+Lets look at MVVM in a more detail.
+
+MVVM splits our application to three parts
+ * *Model* - Contains the business logic
+ * *View* - User interface of the app
+ * *ViewModel* - Entity that co-ordinates data flow and events between the Model and the View.
+
+MVVM pattern also defines the rules of interactions between the three parts of the app. i.e. which component can interact with which other component. 
+
+<figure>
+<img src="/images/mvvm_combine/MVVM_Image1.png" width="400">
+  <figcaption>Fig 1. Components of MVVM pattern</figcaption>
+</figure>
+
+fig. 1 shows how the different parts are related to each other.
+
+MVVM also defines the rules of interactions between the three parts of the app. 
+
+In fig. 1 the arrows indicate how the the different components talk to each other.
+
+For eg: The Model and view never talk to each other directly. i.e they are completely indpendent of each other. This means the model and view can change without affecting each other.
+
+The MVVM pattern also ensures that conforms to the dependency rule. https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html    
+The Dependency Rule. This rule says that source code dependencies can only point inwards.
+
 Boxes shows the components and lines shows the rules of engagement between them.
-    As shown in the diagram the Model and view do not know of each other. They can change independent of each otheri
+Direction of the arrow - Indicates the direction of the dependency. Direction of communication.
+Type of arrow :
+     - - -> Loosely coupled.
+     -----> Solid arrow -- losely bound.
 
-    Show that Onion diagram, with only view and domain layer.
+Model is lower level components that be consumed by many different componenets... think of api.. it really does not care who is using it.. 
 
-Prashanth : Image showing MVVM goes here.
-Static image above does not explani.. lets see it in action.
+Show that Onion diagram, with only view and domain layer.
+This aligns nicely with the onion diagram, where the outers layers, like UI depend on innner layers, but innner layers do not depend on outer layer.
+
+<!-- Prashanth does this not violate the dpeendcy onion thing if the view-model dpeneds on view.. or does it? It just defines and interfac.. THat part of binding is still not clear to me man. -->
+
+<figure>
+<img src="/images/mvvm_combine/onion_dependency_diagram.png" width="400">
+  <figcaption>Fig 2. Dependency Onion Diagram</figcaption>
+</figure>
 
 
-## OK.. fine.. So whats the benefit, Show me the benefit?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## OK.. fine.. Show me the benefit?
 
 Separate presentation
     - Loosesly coupled : Can build and test UI separately
-    - Single Resp Princliple
+    - Single Resp Principle
         -  Views : only change when there is achange to UI and user interaction
         -  Model : Only changes when some domain secific behavior changes.
         -  VM changes : When only some change in view affects the odel and some model affects views... other wise it need not change.
@@ -83,6 +131,12 @@ Dependencies :
 
 <!-- Introduce the counter example -->
 lets build a simple counter
+
+<figure>
+<img src="/images/mvvm_combine/counter_animation.gif" width="400">
+  <figcaption>Fig 1. Componets of MVVM pattern</figcaption>
+</figure>
+
 
 1. Counter : that 
 2. Add button that 
@@ -108,26 +162,72 @@ Tells other ugys.. hey ia m observable .. ie. you can watch me I dont care.. i w
 Sample Code :
 Model : Sample Code  : 
 
-Model Counter : Is an entity that encapsulates calculaation logic. i.e. the functions to add, subtract.
+```swift
+class CounterModel {
+    
+    func incrementCounter(currValue: Int) -> Int {
+        return currValue + 1
+    }
+    
+    func reduceCounter(currValue: Int) -> Int {
+        return currValue - 1
+    }
+}
+
+```
+
+CounterModel is a model object that encapsulates calculation logic.
+In our case Counter model has two methods that 
+
+Few things to note
+- Idp
+
 Takes in a number and returns the next number. (Pure function - that has no side effects)
 
+<!-- In our case we dont need this..  -->
 Has a published property that publishes the latest value.
     - Passthrough Subject : It just publishes the latest value.
 
+
+### Model
+The Model layer, deals encapsulates all the business logic.
+
+The Model layer contains all the domain or business rules. 
+All code that deals with things like data access, networking etc. would all be considered model.
+
+In the counter app, the domain/business rules is code that increments or decrements the counter value.
+
 ```swift
 
-class ModelBoy {
- @Published somefellow: Int
+class Calculator {
+  
+   PassThrough value subjedt
+
+   func addOne(currentValue: Int) -> Int { ... }
+   func minusOne(currentValue: Int) -> Int { ... }
 }
+
 ```
+
+Important
+1. Does not know anything about the counter app. 
+2. Does not store State or have any context 
+
+In MVVM model layer is completely unaware of the view or the view model.
+
+However, the model still needs a way to notify anyone who is interested. i.e Needs a way to return the result of a calculation : Observable, ie other objects can watch for changes.
+
+As show in fig1. the arrow communicates to the view model indirectly. Observalbe, pub sub.. that pattern.
+
 
 Points to note : Knows nothing about the outside, just specializes in add and subtract. and publishes a value. Ensures it s loosely coupled and therefore easy to isolate and test.
 So model matches our goal, easy to test and islolated .. etc.
 
-
 ### View
 
 User interface of our app, everything that is presented to the User... note that is need not be a visible. thereore presentation layer but be better option.
+eg: Audio Graphs https://developer.apple.com/documentation/accessibility/audio_graphs
+
 View - Is the user interface of the app. Its all the UI components such as labels, buttons, textfieds etc.
 
 In the MVVM pattern, views are the "lightest" component. Their role is limited to :
@@ -188,19 +288,3 @@ Summary:
 GUI Pattern Architecture : https://martinfowler.com/eaaDev/uiArchs.html#Model-view-presentermvp
 
 References : GUI Pattern Architecture : https://martinfowler.com/eaaDev/uiArchs.html#Model-view-presentermvp
-
-
-
-#### View 
-
-
-
-
-
-#### Model
-
-
-
-## SubTopic 1
-
-## SubTopic 1
