@@ -253,38 +253,65 @@ Depenedencies
 - Passes user interaction back to the viewmodel for interpretation.i
 - Each view should depend on only one view model.
 
+
+
+
+
 ### View-Model
-Central component in MVVM Pattern
- - While the view and Model are fiercely independent, the view model is more affable, it acts as the interface between the view and model.
+The ViewModel plays a vital role in the MVVM pattern. Does the heavy lifting. Unlike the Model and View entities that are fiercely independent, the ViewModel is more affable; it interacts with both view and model entities.
 
-In its simplest from a View Model is a value converter, i.e it converts values to a value that can be consumed by the view.  
+The ViewModel is an alternate representation of the View and behavior of the UI.
 
-Represents the state and behaviour of the view  independently of the GUI controls used in the interface-  Martin Fowler
+This enables you to bind the same view model to different views.. which helps you swap out views easily? For eg: SwiftUI vs UIKit etc.
 
-Its an alternate representation of the view and behaviour of the UI. - prashanth Moorthy :)
-This enables you to bind the same view model to differnet views.. that helsp you swap out vies easily? For eg: SwiftUI vs UIKit etc.
+> Represents the state and behavior of the view independently of the GUI controls used in the interface-  Martin Fowler
+
+It is easier to consider Presentation Model as an abstract of the view that is not dependent on a specific GUI framework. While several views can utilize the same Presentation Model, each view should require only one Presentation Model. - Martin Fowler
+
+In its simplest form, a ViewModel is a value converter. It simply converts values provided by the Model to a value that can be consumed by the view. 
+For eg: In our price card example. The model publishes the price of type `Double`, and the view model converts the `Double` to a `String` which is consumed by the View.
+
+⚠️  The view should not handle type conversion etc. The View model is the right place.
+
+In most scenarios, ViewModel also stores states, updates the model, and handles user interaction. 
+In its simplest form just a mapping. But will likely have logic for data transformation, persistence, transformation, can have all the logic
+
+#### View Model stores the state 
+
+Any information that we want to keep around is stored in the ViewModel.
+Stores State: Only component in MVVM that has context/stores state.
+
+In our example, the PriceModel publishes the latest price, and it's done. It does not keep track of the last published price.
+However, we want to show the difference and direction of price movement. We use the ViewModel to store the last displayed price and when we get a new updated price we do a comparison in the ViewModel. 
+
+#### View Model handles user interaction 
+
+The view model is also the place to handle user-initiated action. i.e the View intercepts user interaction and communicates it to the ViewModel. 
+The view model then decided how that action is to be interpreted.
+
+When the user taps the refresh button, the view merely communicates to the ViewModel that the refresh button was tapped. i.e it calls the `refresh` method. 
+The view model then decides if this request should be forwarded to the model and then further sets the view state when the data is being fetched.
+<!-- Prashanth adds the debounce here? To show that the view model can reject handling a user interaction? -->
 
 <!-- Show mapping between properties in the view and view model. -->
 
-Exposes a simplified unified view. for eg it can talk to more than one domain object... only those properties & behaviours at are relevant to the view in question.
-Interprets user interactions :  View just sends it all the user interactions, this guy reads it and decides how it needs to be handled.
+#### View Model updates the model
 
-it is easier to consider Presentation Model as an abstract of the view that is not dependent on a specific GUI framework. While several views can utilize the same Presentation Model, each view should require only one Presentation Model. - Martin Fowler
+Exposes a simplified unified view. for eg it can talk to more than one domain object... only those properties & behaviors are relevant to the view in question.
 
-Stores State : Only component in MVVM that has context / stores state.
-Updates the model
+#### View model owns & updates the model
 
-Co-ordinates between view and view model
+#### Co-ordinates between view and view model
 
-In its simplest form just a mapping. But will likely have logic for data transformation, persistence, transformation, can have all the logic
+#### Interation between ViewModel and Model
 
-Owns the model and updates it.
-Views Binds to the View <!-- Prashanth needs more elaboration -->
+#### Interaction between ViewModel and View
+View binds to ViewModel.
+Recives events .. and hanldes it.
+Does not in anyway refer the view.
 
+### Summary: 
 
+GUI Pattern Architecture: https://martinfowler.com/eaaDev/uiArchs.html#Model-view-presentermvp
 
-Summary: 
-
-GUI Pattern Architecture : https://martinfowler.com/eaaDev/uiArchs.html#Model-view-presentermvp
-
-References : GUI Pattern Architecture : https://martinfowler.com/eaaDev/uiArchs.html#Model-view-presentermvp
+References: GUI Pattern Architecture: https://martinfowler.com/eaaDev/uiArchs.html#Model-view-presentermvp
