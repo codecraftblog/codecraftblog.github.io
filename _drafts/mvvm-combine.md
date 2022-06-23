@@ -8,56 +8,46 @@ author:
   twitter: codecraftblog 
 ---
 
-> _To improve is to change; to be perfect is to change often. - Winston Churchill_
+Our code is a living entity. We constantly tinker with it. We add, move, delete and rearrange parts of our code in the hope of making it better.
 
-Architecture Patterns : What are they and why should you care?
+The ease & confidence with which we can change our code, depends a great deal on how it is orgnized. 
+Architectural patterns are time tested solutions help us and anyone working our code understand it better.
 
-Our code is a living entity, we keep adding, moving, removing, rearranging it. It's always changing, and hopefully improving.
-
-The ease & confidence with which we can change our code, depends a great deal on how the code is structured. Architectural patterns are time tested solutions that give us a out of the box solutions.. 
+Patterns do impose some restrictions on what we can and cannot do, but in return our code is easy to reason about, safe to change and easy to test.
 
 >An architectural pattern is a general, reusable solution to a commonly occurring problem in software architecture within a given context. - Wikipedia
 
-In this post, we look at the Model-View-ViewModel design pattern.
+In this post, we look at a structural design pattern called *MVVM* or *Model-View-ViewModel*. 
 
 We answer the following questions.
 1. What is the MVVM?
 2. What is the roles of Model View View-Models?
 3. Example: MVVM in action.
 
-In this post we look at the MVVM pattern in detail. We build a simple iOS app using Swift and Combine framework.
-
-MVVM is a strutctural pattern that looks at our we organize our code.
+To help understand the pattern better we build a simple iOS app using Swift and Apple's Combine framework.
 
 <!--more-->
 
 <br>
 
-
-
-
-
 ## MVVM Introduction
 
 When it comes to building GUI based applications there are many popular patterns. A few examples are: 
 
-- *MVC* - Model-View-Controller
-- *VIPER* - View-Interactor-Presenter-Entity-Router
-- *MVVM* - Model-View-ViewModel
+- **MVC** - Model-View-Controller
+- **VIPER** - View-Interactor-Presenter-Entity-Router
+- **MVVM** - Model-View-ViewModel
 
-Lets look at MVVM in a more detail.
+This post looks at the MVVM pattern.
 
-The Model-View-ViewModel (MVVM) is a structural design pattern. Structural design patterns define how to organize different entities in our app and how different entities interact with each other.
+The Model-View-ViewModel (MVVM) is a structural design pattern. Structural design patterns guide us on how to organize different entities in our app and how different entities interact with each other.
 
-The main goal of MVVM is *separation of concerns*. i.e it helps organize our code in a way that each part of our code deals with a coherent set of functions.
-Yes, patterns do impose some restrictions on what we can and cannot do, but in return our code is easy to reason about, safe to change and easy to test.
-
-Lets look at MVVM in a more detail.
+The main goal of MVVM is *separation of concerns*. i.e it helps organize our code in a way that each part of our code deals with a coherent & well defined set of functions.
 
 MVVM splits our application to three parts
- * *Model* - Contains the business logic
- * *View* - User interface of the app
- * *ViewModel* - Entity that co-ordinates data flow and events between the Model and the View.
+ * **Model** - Contains the Data & business logic of our app. 
+ * **View** - User interface of the app
+ * **ViewModel** - Entity that co-ordinates data flow and events between the Model and the View.
 
 MVVM pattern also defines the rules of interactions between the three parts of the app. i.e. which component can interact with which other component. 
 
@@ -67,15 +57,7 @@ MVVM pattern also defines the rules of interactions between the three parts of t
 </figure>
 
 fig. 1 shows how the different parts are related to each other.
-
-MVVM also defines the rules of interactions between the three parts of the app. 
-
 In fig. 1 the arrows indicate how the the different components talk to each other.
-
-For eg: The Model and view never talk to each other directly. i.e they are completely indpendent of each other. This means the model and view can change without affecting each other.
-
-The MVVM pattern also ensures that conforms to the dependency rule. https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html    
-The Dependency Rule. This rule says that source code dependencies can only point inwards.
 
 Boxes shows the components and lines shows the rules of engagement between them.
 Direction of the arrow - Indicates the direction of the dependency. Direction of communication.
@@ -83,33 +65,25 @@ Type of arrow :
      - - -> Loosely coupled.
      -----> Solid arrow -- losely bound.
 
-Model is lower level components that be consumed by many different componenets... think of api.. it really does not care who is using it.. 
 
-Show that Onion diagram, with only view and domain layer.
-This aligns nicely with the onion diagram, where the outers layers, like UI depend on innner layers, but innner layers do not depend on outer layer.
+As described in fig 1, the Model and View never talk to each other directly. 
+i.e they are completely indpendent of each other. This structure implies the model and view can change without affecting each other.
 
-<!-- Prashanth does this not violate the dpeendcy onion thing if the view-model dpeneds on view.. or does it? It just defines and interfac.. THat part of binding is still not clear to me man. -->
+The MVVM pattern also ensures that conforms to the [dependency rule](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html). 
+The Dependency Rule. This rule says that source code dependencies can only point inwards. That is lower level components dont know anything about higher level components.
 
 <figure>
 <img src="/images/mvvm_combine/onion_dependency_diagram.png" width="400">
   <figcaption>Fig 2. Dependency Onion Diagram</figcaption>
 </figure>
 
+The green arrows shows how the direction of the depenecy. The UI layer depends on the inner layer, but the inner most layer Model does not depend on any of the out layers.
 
+Model is lower level components that be consumed by many different componenets... think of api.. it really does not care who is using it.. 
 
+This aligns nicely with the onion diagram, where the outers layers, like UI depend on innner layers, but innner layers do not depend on outer layer.
 
-
-
-
-
-
-
-
-
-
-
-
-
+<br>
 
 ## OK.. fine.. Show me the benefit?
 
@@ -127,20 +101,24 @@ Dependencies :
     "The goal, as always, is to have a codebase that is loosely coupled and high cohesive, so that changes are easy, fast and safe to make."
 
 
-## MVVM Deep Dive : With an Example
+## MVVM Deep Dive : Example
 
 <!-- Introduce the counter example -->
-lets build a simple counter
+
+Lets build a simple app that displays the price of our currency Dodgy Coin vs the US Dollar. 
 
 <figure>
-<img src="/images/mvvm_combine/counter_animation.gif" width="400">
-  <figcaption>Fig 1. Componets of MVVM pattern</figcaption>
+<img src="/images/mvvm_combine/sample_app_pricefetcher.jpg" width="400">
+  <figcaption>Fig 3. Sample app MVVM pattern</figcaption>
 </figure>
 
+If we break down the UI, we find this.
 
-1. Counter : that 
-2. Add button that 
-3. Minus button that decrements it. It has and additiona fucntion, disable when value is 0. No negative numbers.
+1. We have a card title, that does not change.
+2. One label that shows the price and changes everytime the card gets a new price.
+3. A box at the that displays the change in price. It also shows a background box, that is either red or green or yellow 
+depeding on the direction of price change.
+4. Refresh button, that when tapped fetches the latest price.
 
 Lets look at this through the lens of MVVM
 
@@ -189,6 +167,10 @@ Has a published property that publishes the latest value.
     - Passthrough Subject : It just publishes the latest value.
 
 
+<br>
+<br>
+
+
 ### Model
 The Model layer, deals encapsulates all the business logic.
 
@@ -223,6 +205,12 @@ As show in fig1. the arrow communicates to the view model indirectly. Observalbe
 Points to note : Knows nothing about the outside, just specializes in add and subtract. and publishes a value. Ensures it s loosely coupled and therefore easy to isolate and test.
 So model matches our goal, easy to test and islolated .. etc.
 
+---
+
+<br>
+<br>
+
+
 ### View
 
 User interface of our app, everything that is presented to the User... note that is need not be a visible. thereore presentation layer but be better option.
@@ -254,10 +242,12 @@ Depenedencies
 - Each view should depend on only one view model.
 
 
-
+<br>
+<br>
 
 
 ### View-Model
+
 The ViewModel plays a vital role in the MVVM pattern. Does the heavy lifting. Unlike the Model and View entities that are fiercely independent, the ViewModel is more affable; it interacts with both view and model entities.
 
 The ViewModel is an alternate representation of the View and behavior of the UI.
@@ -309,6 +299,14 @@ Exposes a simplified unified view. for eg it can talk to more than one domain ob
 View binds to ViewModel.
 Recives events .. and hanldes it.
 Does not in anyway refer the view.
+
+
+
+
+<br>
+<br>
+
+
 
 ### Summary: 
 
