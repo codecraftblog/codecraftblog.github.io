@@ -244,15 +244,20 @@ Depenedencies
 
 <br>
 <br>
+--------
+
+### View-Model
+>>>>>>> mvvm-combine
 
 
 ### View-Model
 
 The ViewModel plays a vital role in the MVVM pattern. Does the heavy lifting. Unlike the Model and View entities that are fiercely independent, the ViewModel is more affable; it interacts with both view and model entities.
 
-The ViewModel is an alternate representation of the View and behavior of the UI.
+The ViewModel does most of the heavy lifting in the MVVM pattern. Unlike the Model and View entities that are fiercely independent, the ViewModel is more affable; it interacts with both view and model entities.
 
-This enables you to bind the same view model to different views.. which helps you swap out views easily? For eg: SwiftUI vs UIKit etc.
+The ViewModel is an alternate representation of the View and behavior of the UI.
+By looking at the ViewModel we should be able to validate all the data independent of the View. This enables us to test the correctness of the data just by looking at the view model. 
 
 > Represents the state and behavior of the view independently of the GUI controls used in the interface-  Martin Fowler
 
@@ -265,6 +270,10 @@ For eg: In our price card example. The model publishes the price of type `Double
 
 In most scenarios, ViewModel also stores states, updates the model, and handles user interaction. 
 In its simplest form just a mapping. But will likely have logic for data transformation, persistence, transformation, can have all the logic
+
+#### View Model acts as a value converter. 
+
+Exposes a simplified unified view. for eg it can talk to more than one domain object... only those properties & behaviors are relevant to the view in question.
 
 #### View Model stores the state 
 
@@ -285,11 +294,9 @@ The view model then decides if this request should be forwarded to the model and
 
 <!-- Show mapping between properties in the view and view model. -->
 
-#### View Model updates the model
-
 Exposes a simplified unified view. for eg it can talk to more than one domain object... only those properties & behaviors are relevant to the view in question.
 
-#### View model owns & updates the model
+#### Interactions with other componenets
 
 #### Co-ordinates between view and view model
 
@@ -298,7 +305,10 @@ Exposes a simplified unified view. for eg it can talk to more than one domain ob
 #### Interaction between ViewModel and View
 View binds to ViewModel.
 Recives events .. and hanldes it.
-Does not in anyway refer the view.
+Does not in anyway refer the view. This enables you to bind the same view model to different views.. which helps you swap out views easily? For eg: SwiftUI vs UIKit etc.
+
+One view should have only one viewModel
+One viewModel can work with multiple views 
 
 
 
