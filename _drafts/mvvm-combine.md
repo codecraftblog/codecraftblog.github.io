@@ -227,11 +227,6 @@ Depenedencies
 
 <br>
 <br>
---------
-
-### View-Model
->>>>>>> mvvm-combine
-
 
 ### View-Model
 
@@ -293,12 +288,8 @@ Does not in anyway refer the view. This enables you to bind the same view model 
 One view should have only one viewModel
 One viewModel can work with multiple views 
 
-
-
-
 <br>
 <br>
-
 
 
 ### Summary: 
