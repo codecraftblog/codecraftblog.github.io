@@ -108,85 +108,51 @@ Dependencies :
 Lets build a simple app that displays the price of our currency Dodgy Coin vs the US Dollar. 
 
 <figure>
-<img src="/images/mvvm_combine/sample_app_pricefetcher.jpg" width="400">
+<img src="/images/mvvm_combine/PriceCard.gif" width="400">
   <figcaption>Fig 3. Sample app MVVM pattern</figcaption>
 </figure>
 
-If we break down the UI, we find this.
+<!-- Prashanth give a gentle introduction to the UI without much technical details -->
 
-1. We have a card title, that does not change.
-2. One label that shows the price and changes everytime the card gets a new price.
-3. A box at the that displays the change in price. It also shows a background box, that is either red or green or yellow 
-depeding on the direction of price change.
-4. Refresh button, that when tapped fetches the latest price.
+<br>
+<br>
 
-Lets look at this through the lens of MVVM
-
-#### Model : Fiercely independent.
-The Model layer contains all the domain or business rules. In the counter app, the domain/business rules is the code that  increments or decrements the counter value.
-
-Typically, the model layer would work with other components for data access, networking etc...
+### Model
 
 Important : Does not store state or context. In our counter app, the model layer does not keep a tab of the current value of the counter.
+
+The Model layer, deals encapsulates all the business logic.
 
 Relation to other components in MVVM : Model layer not know about any of the other components.
 
 However, the model still needs a way to notify anyone who is interested. i.e Needs a way to return the result of a calculation : Observable, ie other objects can watch for changes.
 
 Tells other ugys.. hey ia m observable .. ie. you can watch me I dont care.. i will publish values. you can listen to if you want.
-
-<!-- Image of MVVM hilighting only the model -->
-
-Sample Code :
-Model : Sample Code  : 
-
-```swift
-class CounterModel {
-    
-    func incrementCounter(currValue: Int) -> Int {
-        return currValue + 1
-    }
-    
-    func reduceCounter(currValue: Int) -> Int {
-        return currValue - 1
-    }
-}
-
-```
-
-CounterModel is a model object that encapsulates calculation logic.
-In our case Counter model has two methods that 
-
-Few things to note
-- Idp
-
-Takes in a number and returns the next number. (Pure function - that has no side effects)
-
-<!-- In our case we dont need this..  -->
-Has a published property that publishes the latest value.
-    - Passthrough Subject : It just publishes the latest value.
-
-
-<br>
-<br>
-
-
-### Model
-The Model layer, deals encapsulates all the business logic.
-
 The Model layer contains all the domain or business rules. 
 All code that deals with things like data access, networking etc. would all be considered model.
 
 In the counter app, the domain/business rules is code that increments or decrements the counter value.
 
 ```swift
+import Foundation
+import Combine
 
-class Calculator {
-  
-   PassThrough value subjedt
+class PriceProvider: ObservableObject {
 
-   func addOne(currentValue: Int) -> Int { ... }
-   func minusOne(currentValue: Int) -> Int { ... }
+    let currencyName = "Dodgy Coin"          // 1️⃣ 
+    @Published var price: Double = 394.05    // 2️⃣
+
+    init() {
+        startPublishingLatestPrice()
+    }
+    
+    func fetchCurrentPrice() {              // 3️⃣ 
+        // Fetches the price on demand.
+    }
+
+    private func startPublishingLatestPrice() {
+        // Code that publishes the price at regular intervals.  
+    }
 }
 
 ```
@@ -201,7 +167,6 @@ However, the model still needs a way to notify anyone who is interested. i.e Nee
 
 As show in fig1. the arrow communicates to the view model indirectly. Observalbe, pub sub.. that pattern.
 
-
 Points to note : Knows nothing about the outside, just specializes in add and subtract. and publishes a value. Ensures it s loosely coupled and therefore easy to isolate and test.
 So model matches our goal, easy to test and islolated .. etc.
 
@@ -212,6 +177,24 @@ So model matches our goal, easy to test and islolated .. etc.
 
 
 ### View
+
+If we break down the UI, we find this.
+
+
+<figure>
+<img src="/images/mvvm_combine/PriceCardUIBreakDown.png" width="600">
+  <figcaption>Fig 3. Sample app MVVM pattern</figcaption>
+</figure>
+
+
+1. We have a card title, that does not change.
+2. One label that shows the price and changes everytime the card gets a new price.
+3. A box at the that displays the change in price. It also shows a background box, that is either red or green or yellow 
+depeding on the direction of price change.
+4. Refresh button, that when tapped fetches the latest price.
+
+Lets look at this through the lens of MVVM
+
 
 User interface of our app, everything that is presented to the User... note that is need not be a visible. thereore presentation layer but be better option.
 eg: Audio Graphs https://developer.apple.com/documentation/accessibility/audio_graphs
