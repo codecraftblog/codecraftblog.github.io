@@ -65,6 +65,27 @@ Type of arrow :
      - - -> Loosely coupled.
      -----> Solid arrow -- losely bound.
 
+<blockquote>
+This is a Normal Block Quote 
+</blockquote>
+
+<blockquote class="tip">
+<h6>Tip</h6>
+This is a tip
+</blockquote>
+
+<blockquote class="error">
+<h6>Beware</h6>
+This is a error 
+</blockquote>
+
+<blockquote class="Warning">
+This is a error 
+</blockquote>
+
+<blockquote class="happy">
+This is a Normal .. happy 
+</blockquote>
 
 As described in fig 1, the Model and View never talk to each other directly. 
 i.e they are completely indpendent of each other. This structure implies the model and view can change without affecting each other.
@@ -230,67 +251,56 @@ Depenedencies
 
 ### View-Model
 
-The ViewModel plays a vital role in the MVVM pattern. Does the heavy lifting. Unlike the Model and View entities that are fiercely independent, the ViewModel is more affable; it interacts with both view and model entities.
-
-The ViewModel does most of the heavy lifting in the MVVM pattern. Unlike the Model and View entities that are fiercely independent, the ViewModel is more affable; it interacts with both view and model entities.
+The ViewModel does most of the heavy lifting in the MVVM pattern. Unlike the Model and View entities that are fiercely independent, the ViewModel is more affable; it interacts with both the view and the model entities.
 
 The ViewModel is an alternate representation of the View and behavior of the UI.
-By looking at the ViewModel we should be able to validate all the data independent of the View. This enables us to test the correctness of the data just by looking at the view model. 
+In other words, by inpsecting the ViewModel we should be able to validate the data and behaviour independent of the View. This enables us to test the correctness of the data just by looking at the view model. 
 
-> Represents the state and behavior of the view independently of the GUI controls used in the interface-  Martin Fowler
-
-It is easier to consider Presentation Model as an abstract of the view that is not dependent on a specific GUI framework. While several views can utilize the same Presentation Model, each view should require only one Presentation Model. - Martin Fowler
-
-In its simplest form, a ViewModel is a value converter. It simply converts values provided by the Model to a value that can be consumed by the view. 
-For eg: In our price card example. The model publishes the price of type `Double`, and the view model converts the `Double` to a `String` which is consumed by the View.
-
-⚠️  The view should not handle type conversion etc. The View model is the right place.
-
-In most scenarios, ViewModel also stores states, updates the model, and handles user interaction. 
-In its simplest form just a mapping. But will likely have logic for data transformation, persistence, transformation, can have all the logic
+> *Represents the state and behavior of the view independently of the GUI controls used in the interface* -  **Martin Fowler**
 
 #### View Model acts as a value converter. 
+In its simplest form, a ViewModel is a value converter. It simply converts data provided by one ore more model entities to a value that can be consumed by the view. 
+For eg: In our price card example. The model publishes the price of type `Double`, and the view model converts the `Double` to a `String` which is consumed by the View.
 
-Exposes a simplified unified view. for eg it can talk to more than one domain object... only those properties & behaviors are relevant to the view in question.
+<blockquote class="warning">
+<h6>⚠️  Note </h6>
+The view should not handle type conversion etc. The View model is the right place.
+</blockquote>
+
+In most scenarios, ViewModel also stores state, handles user interaction and updates the model. 
 
 #### View Model stores the state 
 
 Any information that we want to keep around is stored in the ViewModel.
-Stores State: Only component in MVVM that has context/stores state.
+In the MVVM pattern the ViewModel is the only component that has context/stores state.
 
-In our example, the PriceModel publishes the latest price, and it's done. It does not keep track of the last published price.
+In our example, the Model entity (PriceModel) publishes the latest price, and it's done. It does not keep track of the last published price.
 However, we want to show the difference and direction of price movement. We use the ViewModel to store the last displayed price and when we get a new updated price we do a comparison in the ViewModel. 
 
 #### View Model handles user interaction 
 
-The view model is also the place to handle user-initiated action. i.e the View intercepts user interaction and communicates it to the ViewModel. 
-The view model then decided how that action is to be interpreted.
+The view model is also the place to handle user-initiated action. i.e when the user interacts with View, the View intercepts user interaction and communicates it to the ViewModel. The ViewModel then decides how that action should be interpreted.
 
-When the user taps the refresh button, the view merely communicates to the ViewModel that the refresh button was tapped. i.e it calls the `refresh` method. 
+In our example, when the user taps the refresh button, the view merely communicates to the ViewModel that the refresh button was tapped. i.e it calls the `refresh()` method. 
 The view model then decides if this request should be forwarded to the model and then further sets the view state when the data is being fetched.
-<!-- Prashanth adds the debounce here? To show that the view model can reject handling a user interaction? -->
 
-<!-- Show mapping between properties in the view and view model. -->
-
-Exposes a simplified unified view. for eg it can talk to more than one domain object... only those properties & behaviors are relevant to the view in question.
-
-#### Interactions with other componenets
-
-#### Co-ordinates between view and view model
+<!-- Prashanth Show mapping between properties in the view and view model. -->
 
 #### Interation between ViewModel and Model
+- ViewModel can work with one or more model entities..
+- ViewModel holds on to a referece to the model entities. Conversely the models are unware of the ViewModels. 
+- ViewModel listens for changes in the model entities and reacts to any changes.
 
 #### Interaction between ViewModel and View
-View binds to ViewModel.
-Recives events .. and hanldes it.
-Does not in anyway refer the view. This enables you to bind the same view model to different views.. which helps you swap out views easily? For eg: SwiftUI vs UIKit etc.
+- View binds to ViewModel. Does not hold a reference.  Does not in anyway refer the view. This enables you to bind the same view model to different views.. which helps you swap out views easily? For eg: SwiftUI vs UIKit etc.
+- ViewModel receives events from the view and then reacts.
+- ViewModel   One view should have only one viewModel
+- One ViewModel can work with multiple views 
 
-One view should have only one viewModel
-One viewModel can work with multiple views 
+Our example :
 
 <br>
 <br>
-
 
 ### Summary: 
 

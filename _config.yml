@@ -30,10 +30,11 @@ plugins:
   - jekyll-feed
 
 #skin: "/assets/css/skins/dark.css"
-skin: "/assets/css/skins/default.css"
+#skin: "/assets/css/skins/default.css"
+#skin: "/assets/css/skins/prashdefault.css"
 #skin: "/assets/css/skins/light.css"
 #skin: "/assets/css/skins/dark.css"
-#skin: "/assets/css/skins/prashdark.css"
+skin: "/assets/css/skins/prashcustom.css"
 
 author:
   name: Prashanth 
