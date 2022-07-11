@@ -24,6 +24,7 @@ github_username: codecraftblog
 # Build settings
 markdown: kramdown
 #theme: minima
+
 remote_theme: "mmistakes/so-simple-theme@3.2.0"
 
 plugins:
