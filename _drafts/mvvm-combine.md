@@ -180,15 +180,15 @@ Some View components also allow user interaction. When user action is detected (
   <figcaption>Fig ?. View Model and its interactions</figcaption>
 </figure>
 
-Views should avoid having any logic in them. Avoid doing any type of type conversion etc in the View. Views rely on the ViewModel to provide the data they need via bindings.
+Views should avoid placing any logic in them. Avoid doing type conversion etc. in the View. Views rely on the ViewModel to provide the data they need via bindings.
 
-In most apps, the views tend to change most often. Adopting the MVVM pattern allows us to develop and test views independently. The Views in our app can be easily be modified or even completely replaced without affecting the rest of the app. 
+In many apps, the views tend to change most often. Adopting the MVVM pattern allows us to develop and test views independently. The Views in our app can be easily be modified or even completely replaced without affecting the rest of the app. 
 
 Lets say we decide to migrate our UIKit based app to SwiftUI, we can develop and test the SwiftUI view independently with a mock ViewModel and replace our UIKit view when our new view is ready.
 
 #### Relationship View in MVVM
 
-In the MVVM pattern, the View only interacts with the ViewModel.
+In the MVVM pattern, the View interacts only with the ViewModel.
 A view only works with a single ViewModel, however the ViewModel can serve mulitple views.
 
 <figure>
@@ -203,11 +203,11 @@ This means the View and Model are free to change without worrying about the othe
 
 #### Relationship between View & ViewModel in MVVM 
 
-As we discussed above, the View needs to bind to ViewModel. This enables to View to watch for cchanges it is interested in update itself.
+As we discussed above, the View binds itself to the ViewModel. This enables to View to watch for changes it is interested in update itself.
 
 The binding can be one-way or a two-way binding.
-A one-way binding is where a View element only reads a value from the ViewModel. For eg: a Label.
-In a two-way or bi-directional binding, the view can also updated the property its bound to in the ViewModel. For eg: A TextField that be both display a value and can be edited by the user. 
+- **one-way binding** is where a View element only reads a value from the ViewModel. For eg: a Label.
+- **two-way or bi-directional binding**, the view can also updated the property its bound to in the ViewModel. For eg: A TextField that be both display a value and can be edited by the user. 
 
 There are many different techniques to bind a view to a ViewModel.
 Few popular ways are 
@@ -215,7 +215,16 @@ Few popular ways are
 - Key Value Observing (KVO), Notification 
 - Using Reactive frameworks RxSwift, RxCocoa, Combine
 
-In this post we use Apple's Combine framework for binding.
+In this post we use SwiftUI to build the UI. SwiftUI has a neat property wrapper `ObservedObject` that subscribes to an ObservableObject(our ViewModel) and refreshes the view when there is a change in value.
+
+ObservedObject
+A property wrapper type that subscribes to an observable object and invalidates a view whenever the observable object changes.
+
+<blockquote class="tip">
+<h6>ObservedObject</h6>
+<p>ObservedObject</p>
+A property wrapper type that subscribes to an observable object and invalidates a view whenever the observable object changes.
+</blockquote>
 
 #### How to bind View to a ViewModel (using Combine)
 
