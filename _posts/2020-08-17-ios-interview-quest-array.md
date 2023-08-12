@@ -9,6 +9,7 @@ author:
   twitter: codecraftblog 
   picture: /images/profilePhoto.jpg
 ---
+
 The Array is probably the most widely used data structure in programming. The array is a versatile data structure that used to solve a large number of problems.
 It is easy to learn and work with an array however, most programmers don't use all of Array's features. 
 

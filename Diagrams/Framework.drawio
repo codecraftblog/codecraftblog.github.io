@@ -1,0 +1,66 @@
+<mxfile host="Electron" modified="2023-06-09T03:42:44.415Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="8azK2K5eyEVlOvKP7nMH" version="21.2.8" type="device">
+  <diagram name="Page-1" id="Ol8msPMFcrOSPMoyWzIu">
+    <mxGraphModel dx="2283" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CyCr5TgSfldLblK8MDbL-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.683;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="CyCr5TgSfldLblK8MDbL-2" target="CyCr5TgSfldLblK8MDbL-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="435" y="160" />
+              <mxPoint x="313" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="350" y="200" width="150" height="216" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="200" width="150" height="216" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-4" value="Survey Logic &lt;br&gt;(Kotlin)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="615" y="230" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-5" value="MDK" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="400" y="426" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-6" value="Android" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="645" y="428" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.358;entryY=1.067;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="CyCr5TgSfldLblK8MDbL-7" target="CyCr5TgSfldLblK8MDbL-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="70" y="198" width="150" height="216" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-8" value="Survey Logic framework" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="170" y="40" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-9" value="iOS&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="110" y="426" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-13" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="810" y="198" width="150" height="216" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-14" value="Survey Logic &lt;br&gt;(JS)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="735" y="44" width="120" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-15" value="Webapp" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="850" y="426" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-16" value="&lt;ul&gt;&lt;li&gt;Make Proposal to Sebastine&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="508" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-17" value="&lt;ul&gt;&lt;li&gt;Make Proposal to Sebastine&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="495" y="558" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="CyCr5TgSfldLblK8MDbL-18" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-10" y="170" as="sourcePoint" />
+            <mxPoint x="990" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

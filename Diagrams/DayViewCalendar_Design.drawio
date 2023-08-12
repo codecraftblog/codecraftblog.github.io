@@ -1,0 +1,296 @@
+<mxfile host="Electron" modified="2023-07-06T06:07:59.825Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="VBBfWu6KTy9_tMZhco-k" version="21.2.8" type="device" pages="2">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1986" dy="1146" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-0" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="660" y="600" width="270" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.004;entryY=0.1;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="wsC3TzSIen9OB3LaaLIi-1" target="wsC3TzSIen9OB3LaaLIi-41" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-1" value="Event Card View (ID, NAME)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="690" y="650" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-2" value="EventCardViewModel" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1045" y="380" width="265" height="150" as="geometry" />
+        </mxCell>
+        <object label="event: EKEvent" placeholders="1" id="wsC3TzSIen9OB3LaaLIi-3">
+          <mxCell style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-2" vertex="1">
+            <mxGeometry y="30" width="265" height="30" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-4" value="eventDelegate :EventViiewActionDelegate" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-2" vertex="1">
+          <mxGeometry y="60" width="265" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-5" value="eventState : EventState" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-2" vertex="1">
+          <mxGeometry y="90" width="265" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-34" value="something..." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-2" vertex="1">
+          <mxGeometry y="120" width="265" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-6" value="CalendarViewModel" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="665" y="410" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-7" value="eventViewModel: [EventViewModel]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-6" vertex="1">
+          <mxGeometry y="30" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-8" value="eventViewActionDelegate" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-6" vertex="1">
+          <mxGeometry y="60" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-9" value="var&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-6" vertex="1">
+          <mxGeometry y="90" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-10" value="EKEventStore ?" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1340" y="630" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-12" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="wsC3TzSIen9OB3LaaLIi-6" target="wsC3TzSIen9OB3LaaLIi-13" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="940" y="481" as="sourcePoint" />
+            <mxPoint x="1115" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-13" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;EventViewActionDelegate&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ field1: Type&lt;br&gt;+ field2: Type&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ userDidTap(event : Event)&lt;br&gt;+ userDidPan(event: Event, panGesture)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="682.5" y="220" width="235" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-15" value="&lt;b&gt;Event State&lt;br&gt;&lt;/b&gt;- Conflict&lt;br&gt;- Regular&lt;br&gt;- isEditing" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1350" y="435" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-17" value="DayView Calendar View" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="720" y="1100" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-18" value="EventCalendarView : UIView" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="280" y="800" width="280" height="180" as="geometry">
+            <mxRectangle x="270" y="770" width="190" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-19" value="createWith(frame, calendarViewModel)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-18" vertex="1">
+          <mxGeometry y="30" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-20" value="calendarViewDelegate : calendarViewDelegate" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-18" vertex="1">
+          <mxGeometry y="60" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-38" value="reloadCalendar(calendarViewModel)" style="text;strokeColor=#b85450;fillColor=#f8cecc;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-18" vertex="1">
+          <mxGeometry y="90" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-45" value="updateTimeStamp(currentTime:&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-18" vertex="1">
+          <mxGeometry y="120" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-51" value="updateEventStatus(calendarViewMode)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-18" vertex="1">
+          <mxGeometry y="150" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-26" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;CalendarActionDelegate&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ field1: Type&lt;br&gt;+ field2: Type&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ userSelectedEvent(event : Event)&lt;br&gt;+ userDidEditEvent(event)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ userDidRescheduleEvent(event: Event)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="280" y="540" width="280" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-28" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-80" y="540" width="240" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-29" value="" style="endArrow=none;dashed=1;html=1;rounded=0;strokeColor=#FF0080;strokeWidth=3;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="1100" as="sourcePoint" />
+            <mxPoint x="200" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-30" value="MDK Application" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-5" y="490" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-31" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.163;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="wsC3TzSIen9OB3LaaLIi-26" target="wsC3TzSIen9OB3LaaLIi-28" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="270" y="730" as="sourcePoint" />
+            <mxPoint x="381" y="731" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="wsC3TzSIen9OB3LaaLIi-35" target="wsC3TzSIen9OB3LaaLIi-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-35" value="DayViewCalendar&lt;br&gt;&amp;lt;Extension&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-50" y="720" width="180" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="wsC3TzSIen9OB3LaaLIi-37" target="wsC3TzSIen9OB3LaaLIi-49" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-37" value="Calendar Header" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-40" y="670" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-39" value="EventCardView" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1045" y="602" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-40" value="init(withFrame, EventCardViewModel)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-39" vertex="1">
+          <mxGeometry y="30" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-43" value="eventDelegate : EventActionDelegate" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-39" vertex="1">
+          <mxGeometry y="60" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-41" value="eventViewActionDelegate" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-39" vertex="1">
+          <mxGeometry y="90" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-42" value="var&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="wsC3TzSIen9OB3LaaLIi-39" vertex="1">
+          <mxGeometry y="120" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="wsC3TzSIen9OB3LaaLIi-19" target="wsC3TzSIen9OB3LaaLIi-0" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-46" value="Important: Experience needs to be communicated.&amp;nbsp;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#b85450;fillColor=#f8cecc;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-80" y="400" width="290" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-47" value="Gautham to define events that come from MDK to calendar" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#b85450;fillColor=#f8cecc;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-80" y="360" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.36;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#FF0000;labelBorderColor=#FF0000;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="wsC3TzSIen9OB3LaaLIi-49" target="wsC3TzSIen9OB3LaaLIi-35" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-70" y="610" />
+              <mxPoint x="-70" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-49" value="MDK Context" style="rounded=1;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-20" y="575" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wsC3TzSIen9OB3LaaLIi-52" value="Raksha:&amp;nbsp; to define events that come from MDK to calendar" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#b85450;fillColor=#f8cecc;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1045" y="785" width="330" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4rJDMQu8MmEywl2s3Rid-0" value="JSON OF VISITS" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-20" y="1160" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4rJDMQu8MmEywl2s3Rid-1" value="ARRAY[EVENTS]" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="340" y="1160" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4rJDMQu8MmEywl2s3Rid-2" value="ID, NAME" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="5" y="1190" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4rJDMQu8MmEywl2s3Rid-3" value="ID, NAME" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="350" y="1190" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4rJDMQu8MmEywl2s3Rid-4" value="ARRAY[Views]" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="750" y="1160" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4rJDMQu8MmEywl2s3Rid-5" value="ID, NAME" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="750" y="1190" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4rJDMQu8MmEywl2s3Rid-6" value="Event Card View" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="690" y="785" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="4rJDMQu8MmEywl2s3Rid-7" value="Event Card View" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="695" y="930" width="210" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pzH2FD4ibrnNvYyF07v7" name="Page-2">
+    <mxGraphModel dx="1447" dy="380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="680" y="670" width="230" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-2" value="WebView&lt;br&gt;(Hybrid App URL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="710" y="730" width="170" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="710" y="1040" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="770" y="1040" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="830" y="1040" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-6" value="Navbar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="710" y="690" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="670" width="230" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-8" value="WebView&lt;br&gt;(Hybrid App URL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="730" width="170" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-13" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="670" width="230" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-15" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="790" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fsEZTmvaY7FfVO_r5Apy-16" target="fsEZTmvaY7FfVO_r5Apy-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-16" value="??" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="790" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-17" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="850" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-18" value="Navbar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="690" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-19" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="850" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-20" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="910" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-21" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="910" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-24" value="Login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="420" y="670" width="230" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-25" value="Some&lt;br&gt;API Integration" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="475" y="970" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-27" value="Authentication&lt;br&gt;- Cookie Based Auth with the backend" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1280" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-28" value="Token and API - Cookies" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="1320" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fsEZTmvaY7FfVO_r5Apy-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="450" y="1170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fsEZTmvaY7FfVO_r5Apy-29" target="fsEZTmvaY7FfVO_r5Apy-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-29" value="Two ways :&lt;br&gt;SSO&lt;br&gt;Basic Auth" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1140" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fsEZTmvaY7FfVO_r5Apy-31" target="fsEZTmvaY7FfVO_r5Apy-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-31" value="Gets back a Token" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="470" y="1155" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fsEZTmvaY7FfVO_r5Apy-33" target="fsEZTmvaY7FfVO_r5Apy-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-33" value="Send Token back to backend With a RESTAPI" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="1140" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="fsEZTmvaY7FfVO_r5Apy-35" target="fsEZTmvaY7FfVO_r5Apy-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-35" value="Backend sets a cookie in the webview" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1140" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-37" value="Further communicaton happens based on cookie" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="1140" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-41" value="Only Supported&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="1210" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-42" value="Working on OIDC - Not fully implemented" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1065" y="1240" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-43" value="Question : How do we support Cookie based auth?" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="1125" width="290" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fsEZTmvaY7FfVO_r5Apy-44" value="Question : No Integration with BTP - Should we login again" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="1155" width="340" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
