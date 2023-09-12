@@ -2,9 +2,7 @@
 layout: post
 title:  "Making POST Requests in Swift : A Beginner's Guide"
 date:   2023-08-12
-categories: iOS Networking Swift 
-author:
-  name: Prashanth 
+categories: iOS Networking Swift author: name: Prashanth 
   twitter: codecraftblog 
   picture: /images/profilePhoto.jpg
 ---
