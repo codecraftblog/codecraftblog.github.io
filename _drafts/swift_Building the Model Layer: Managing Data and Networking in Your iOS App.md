@@ -79,25 +79,66 @@ Single Source of trugh for all data within the app.
 Overall, a well-designed Model layer in the MVVM pattern helps in achieving code maintainability, testability, reusability, and scalability. It promotes a clear separation of concerns, allowing for focused development and easier maintenance. By centralizing data management and enforcing data consistency, it ensures the integrity of the application's data. Additionally, a well-designed Model layer provides the flexibility to adapt to changes and interoperability with external components, making it a crucial component for building robust and extensible applications.
 
 
-
-
-
-
-
-
-
-
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Designing the Data Model
 
+    Introduction : Designing the Model Layer    
+    First we need to understand the domain of the problem we are trying to solve. 
+
+In our example we are using the PetStore. So we need to understand the domain of a pettore. and what entities go into making a petStore.
+For eg: It is reasonable to assume a PetStore will have Pets... some type of store entiy and etc     
+Give another example : Garage managmeent app. Wil have Cars, Customers, Work orders etc.
+It is important to have a good understanding of the domain before starting an app.
+In our case here the PetStore Swagger API already defines this for us. And this is usually true when we use any exiting API. The API will already have most of th entities and in most cases it make sense to map our entities to the API. 
+
+
+    Understanding the API Response
     Briefly explain the importance of converting API JSON responses to custom entities.
 
-In a typical app, data comes from an extneral source like an API or DataBase .
-The format in which we get data from an extenral source is not expected to match our apps 'view' of the data. also the data structure we use in our app need not come form a single srounce.
-i.e we might need to merge data from two or more source to get the data in the desired format.
 
-We could use it directly but that 
+Lets look at the PetStore API. Here is where OPENAPI spec comes in handy. We will not go into the details of the OpenAPI, but we can look at the  entity definitions in the webpage.
+
+<!--TODO:  Here we add a link to Swagger Again.-->
+
+Going to back to the idea of our app. We want to list a bunch of pets their status ... Based on that requirement, it is clear  
+Its clear that we need the following entities : 
+    Pet 
+    Tag
+
+    WHich fields do we need?
+Looking closer at the Pet enity the API response looks like : 
+
+<!--TODO: Add Code snippet to the Pet Entity JSON -->
+
+From this we can see we need the following fields :
+Eg: 
+1. Name,
+2. ID
+3. 
+
+
+<!--TODO: Add a Quote or the Box thing here. -->
+Note: Its not necessary that we need to following the same structure as the API resoponse the API might have fields we are not intrested in or our entity could have addtional fields that come from a different API. 
+
+<!--TODO: Add Code snippet to Show the Pet Entitiy-->
+
+
+Further, we use the Tag Entity as it is defined in the API
+<!--TODO: Add Code snippet to Show the Pet Entitiy-->
+
+
+Aside : 
+Here we explain why would want to design our own model layer. 
+    Here is where we desing a data Model that is closer to the structure of our app.
+
+
+<!-- Prashanth Left off here....  -->
 
 Here is where we desing a data Model that is closer to the structure of our app.
 
